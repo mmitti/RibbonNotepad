@@ -1,0 +1,89 @@
+﻿2012/05/01 20:43:04 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\NOTE_PAD\NOTE_PAD.vcxproj" (build ターゲット)。
+     1>InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "Debug\NOTE_PAD.unsuccessfulbuild" を作成しています。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt win.cpp
+         win.cpp
+       ResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\NOTE_PAD.res" NOTE_PAD.rc 
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\NOTE_PAD.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.lib" /MACHINE:X86 Debug\NOTE_PAD.res
+         Debug\win.obj
+         LINK : 前回のインクリメンタル リンクで D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+         NOTE_PAD.vcxproj -> D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe;#1" /manifest NOTE_PAD.exe.manifest Debug\NOTE_PAD.exe.intermediate.manifest "D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\NOTE_PAD\\NOTE_PAD.exe.manifest"
+       PostBuildEvent:
+         ROBOCOPY C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\ D:\Masashi\Dropbox\VS\NOTE_PAD\  *.h *.hpp *.hxx *.hm *.inl *.inc *.xsd *.cpp *.c *.cc *.cxx *.def *.odl *.idl *.hpj *.bat *.asm *.asmx *.rc /S /B /PURGE /COPY:DATO /XO /NS /NC /NFL /NDL /NP /R:5 /W:5
+         dumpbin /DEPENDENTS "D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe"
+         :VCEnd
+         
+         -------------------------------------------------------------------------------
+            ROBOCOPY     ::     Windows の堅牢性の高いファイル コピー                              
+         -------------------------------------------------------------------------------
+         
+           開始: Tue May 01 20:43:10 2012
+         
+            コピー元 - C:\Program\
+              コピー先 - D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\NOTE_PAD\Files\Microsoft\
+         
+             ファイル: Visual
+         	    Studio
+         	    
+           オプション: /COPY:DAT /R:1000000 /W:30 
+         
+         ------------------------------------------------------------------------------
+         
+         エラー: 無効なパラメータ #5 : "10.0\Common7\IDE\"
+         
+                簡易な使用法 :: ROBOCOPY コピー元 コピー先 /MIR
+         
+                    コピー元 :: コピー元ディレクトリ (ドライブ:\パスまたは \\サーバー
+         
+                                \共有\パス)。
+                    コピー先 :: コピー先ディレクトリ (ドライブ:\パスまたは \\サーバー
+         
+                                \\共有\パス)。
+                        /MIR :: 完全なディレクトリ ツリーをミラー化します。
+         
+             詳細な使用方法については、ROBOCOPY /? を実行してください。
+         
+                                                                   
+         ****  /MIR はファイルをコピーできるだけでなく、削除もできます。
+         Microsoft (R) COFF/PE Dumper Version 10.00.40219.01
+         Copyright (C) Microsoft Corporation.  All rights reserved.
+         
+         
+         Dump of file D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\Debug\NOTE_PAD.exe
+         
+         File Type: EXECUTABLE IMAGE
+         
+           Image has the following dependencies:
+         
+             KERNEL32.dll
+             USER32.dll
+             GDI32.dll
+             COMDLG32.dll
+             SHELL32.dll
+             COMCTL32.dll
+             IMM32.dll
+             MSVCR100D.dll
+         
+           Summary
+         
+                 4000 .data
+                 2000 .idata
+                 3000 .rdata
+                 2000 .reloc
+                48000 .rsrc
+                 D000 .text
+                10000 .textbss
+       FinalizeBuildStatus:
+         ファイル "Debug\NOTE_PAD.unsuccessfulbuild" を削除しています。
+         "Debug\NOTE_PAD.lastbuildstate" のタッチ タスクを実行しています。
+     1>プロジェクト "D:\Masashi\ドキュメント\プログラム\Projects\VC++\Projects\NOTE_PAD\NOTE_PAD\NOTE_PAD.vcxproj" (build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:05.98

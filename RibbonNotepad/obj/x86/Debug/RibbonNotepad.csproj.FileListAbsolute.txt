@@ -1,0 +1,13 @@
+D:\Masashi\ドキュメント\プログラム\Projects\C#\Notepad2\Notepad2\obj\x86\Debug\Notepad2.NotepadForm.resources
+D:\Masashi\ドキュメント\プログラム\Projects\C#\Notepad2\Notepad2\obj\x86\Debug\RibbonNotepad.Properties.Resources.resources
+D:\Masashi\ドキュメント\プログラム\Projects\C#\Notepad2\Notepad2\obj\x86\Debug\Notepad2.ToLineDialog.resources
+D:\Masashi\ドキュメント\プログラム\Projects\C#\Notepad2\Notepad2\obj\x86\Debug\RibbonNotepad.csproj.GenerateResource.Cache
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\bin\Debug\RibbonNotepad.exe.config
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.Properties.Resources.resources
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.csproj.GenerateResource.Cache
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\bin\Debug\RibbonNotepad.exe
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\bin\Debug\RibbonNotepad.pdb
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.exe
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.pdb
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.NotepadForm.resources
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.ToLineDialog.resources

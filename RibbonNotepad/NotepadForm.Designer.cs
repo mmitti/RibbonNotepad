@@ -250,6 +250,7 @@
 			this.EditMenuItemFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
 			this.EditMenuItemFind.Size = new System.Drawing.Size(201, 22);
 			this.EditMenuItemFind.Text = "検索(&F)";
+			this.EditMenuItemFind.Click += new System.EventHandler(this.EditMenuItemFind_Click);
 			this.EditMenuItemFind.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// EditMenuItemFindNext
@@ -329,7 +330,7 @@
 			// toolStripStatusLabel
 			// 
 			this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-			this.toolStripStatusLabel.Size = new System.Drawing.Size(440, 18);
+			this.toolStripStatusLabel.Size = new System.Drawing.Size(471, 18);
 			this.toolStripStatusLabel.Spring = true;
 			this.toolStripStatusLabel.Text = "Ready";
 			this.toolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

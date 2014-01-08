@@ -21,13 +21,14 @@ namespace RibbonNotepad
 		public readonly String ASSEMBLY_NAME;
 		private Notepad notepad;
 		private ToLineDialog mToLineDialog;
-
-	
+		private FindDialog mFindDialog;
+		private Find mFind;
 
 
 		public NotepadForm()
 		{
 			InitializeComponent();
+			mFind = new Find(textBox1);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
 			mToLineDialog = new ToLineDialog();
 			ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
@@ -201,6 +202,12 @@ namespace RibbonNotepad
 				textBox1.ToLine((int)mToLineDialog.Value);
 				textBox1.ScrollToCaret();
 			}
+		}
+
+		private void EditMenuItemFind_Click(object sender, EventArgs e)
+		{
+			mFindDialog = new FindDialog(mFind);
+			mFindDialog.Show();
 		}
 
 

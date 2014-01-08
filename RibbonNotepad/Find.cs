@@ -5,18 +5,54 @@ using System.Text;
 
 namespace RibbonNotepad
 {
-	class Find
+	public class Find
 	{
 		private NotepadTextBox mTextBox;
-		public FindOption findOption { get; set; }
+		public FindOption findOption;
+		private int mCurrentIndex;
+		public event Events.StatusTextUpdateEvent statusTextUpdate; 
 		public Find(NotepadTextBox textbox)
 		{
 			mTextBox = textbox;
 			findOption = new FindOption();
+			findOption.findDir = FindOption.FindDirection.DOWN;
+			findOption.text = "";
+			findOption.useEscapeSequence = false;
+			findOption.useRegular = false;
+			findOption.caseSensitive = false;
+		}
+
+		//先頭から検索をするときに呼ぶ　カーソルが自動的に移動する；
+		public void findFirst()
+		{
+			textFind(0);
+		}
+
+		public void findNext()
+		{
+			textFind(mTextBox.SelectionStart + mTextBox.SelectionLength);//TODO 修正
+		}
+
+		private void textFind(int s)
+		{
+			int i = find(s, findOption.text);
+			if (i == -1) statusTextUpdate(this, findOption.text + " が見つかりませんでした。");
+			else mTextBox.Select(i, findOption.text.Length);
+		}
+
+		protected int find(int s, String text)
+		{
+			return mTextBox.Text.IndexOf(text, s);
+		}
+
+		public Boolean canFindNext()
+		{
+			if (findOption.text.Equals("")) return false;
+			return true;
 		}
 	}
 
-	struct FindOption
+	public struct FindOption
 	{
 		public enum FindDirection { UP, DOWN };
 		public FindDirection findDir { get; set; }
@@ -24,13 +60,6 @@ namespace RibbonNotepad
 		public Boolean useRegular { get; set; }
 		public Boolean useEscapeSequence { get; set; }
 		public Boolean caseSensitive { get; set; }
-		public FindOption()
-		{
-			findDir = FindDirection.DOWN;
-			text = "";
-			useEscapeSequence = false;
-			useRegular = false;
-			caseSensitive = false;
-		}
+
 	}
 }

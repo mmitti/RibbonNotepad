@@ -30,12 +30,12 @@ namespace RibbonNotepad
 
 		public int getRow()
 		{
-			return SendMessage(this.Handle, EM_LINEFROMCHAR, -1, 0) + 1;
+			return SendMessage(this.Handle, EM_LINEFROMCHAR, SelectionStart, 0) + 1;
 		}
 
 		public int getCol()
-		{
-			int lineIndex = SendMessage(this.Handle, EM_LINEINDEX, -1, 0);
+		{//TODO 非効率?
+			int lineIndex = SendMessage(this.Handle, EM_LINEINDEX, getRow() - 1, 0);
 			return this.SelectionStart - lineIndex + 1;
 		}
 
@@ -63,5 +63,23 @@ namespace RibbonNotepad
 			CaretChanged(this, null);
 		}
 
+		protected override void OnMouseDown(MouseEventArgs e)
+		{
+			base.OnMouseDown(e);
+			CaretChanged(this, null);
+		}
+
+		public new void Select(int start, int length)
+		{
+			base.Select(start, length);
+			CaretChanged(this, null);
+		}
+
+		public new void SelectAll()
+		{
+			base.SelectAll();
+
+			CaretChanged(this, null);
+		}
 	}
 }

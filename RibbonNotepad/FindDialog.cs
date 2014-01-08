@@ -23,12 +23,12 @@ namespace RibbonNotepad
 			checkBoxUseRegular.Checked = find.findOption.useRegular;
 			if (find.findOption.findDir == FindOption.FindDirection.UP) FindDirUp.Checked = true;
 			else FindDirDown.Checked = true;
-			textBox1 = find.findOption.text;
+			textBox1.Text = find.findOption.text;
 		}
 
 		public new void Show()
 		{
-			//if (Visible) return;
+			if (Visible) return;
 			mIsFindFirst = false;
 			base.Show();
 		}
@@ -36,6 +36,7 @@ namespace RibbonNotepad
 		private void onFindTextChanged(object sender, EventArgs args)
 		{
 			mIsFindFirst = false;
+			mFind.findOption.text = textBox1.Text;
 		}
 	 
 
@@ -43,15 +44,15 @@ namespace RibbonNotepad
 		{
 			if (!mIsFindFirst)
 			{
-				//検索開始位置をいじる
+				mFind.findFirst();
 				mIsFindFirst = true;
 			}
-			//次を検索を呼ぶ
+			else mFind.findNext();
 		}
 
 		private void buttonFindNext_Click(object sender, EventArgs e)
 		{
-
+			mFind.findNext();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
@@ -69,36 +70,43 @@ namespace RibbonNotepad
 			}
 			else if (keyData == (Keys.Alt | Keys.C))
 			{
-				checkBoxCaseSensitive.Checked = !checkBoxUseEscapeSequence.Checked;
+				checkBoxCaseSensitive.Checked = !checkBoxCaseSensitive.Checked;
 				checkBoxCaseSensitive.Focus();
+				mFind.findOption.caseSensitive = checkBoxCaseSensitive.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.E))
 			{
 				checkBoxUseEscapeSequence.Checked = !checkBoxUseEscapeSequence.Checked;
 				checkBoxUseEscapeSequence.Focus();
+				mFind.findOption.useEscapeSequence = checkBoxUseEscapeSequence.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.R))
 			{
 				checkBoxUseRegular.Checked = !checkBoxUseRegular.Checked;
 				checkBoxUseRegular.Focus();
+				mFind.findOption.useRegular = checkBoxUseRegular.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.U))
 			{
 				FindDirUp.Checked = true;
 				FindDirUp.Focus();
+				mFind.findOption.findDir = FindOption.FindDirection.UP;
 			}
 			else if (keyData == (Keys.Alt | Keys.D))
 			{
 				FindDirDown.Checked = true;
-				FindDirDown.Focus();
+				FindDirDown.Focus(); 
+				mFind.findOption.findDir = FindOption.FindDirection.DOWN;
 			}
 			else if (keyData == (Keys.Alt | Keys.O))
 			{
-				//先頭から検索
+				buttonFindFirst_Click(this, null);
+				mIsFindFirst = false;
 			}
 			else if (keyData == (Keys.Alt | Keys.F))
 			{
-				//次を検索
+				buttonFindNext_Click(this, null);
+				mIsFindFirst = false;
 			}
 			else
 			{

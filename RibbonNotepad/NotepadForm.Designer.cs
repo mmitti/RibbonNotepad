@@ -305,6 +305,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBox1.HideSelection = false;
 			this.textBox1.Location = new System.Drawing.Point(0, 29);
 			this.textBox1.MaxLength = 999999999;
 			this.textBox1.Multiline = true;

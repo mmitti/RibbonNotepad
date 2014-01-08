@@ -29,6 +29,7 @@ namespace RibbonNotepad
 		{
 			InitializeComponent();
 			mFind = new Find(textBox1);
+			mFind.statusTextUpdate += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
 			mToLineDialog = new ToLineDialog();
 			ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
@@ -183,6 +184,8 @@ namespace RibbonNotepad
 			this.EditMenuItemDel.Enabled = text_menu_item_enable;
 			if (textBox1.CanUndo) EditMenuItemUndo.Enabled = true;
 			else EditMenuItemUndo.Enabled = false;
+
+			this.EditMenuItemFindNext.Enabled = mFind.canFindNext();
 		}
 
 		private void NotepadForm_FormClosing(object sender, FormClosingEventArgs e)

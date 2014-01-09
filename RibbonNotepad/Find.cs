@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace RibbonNotepad
 {
@@ -29,31 +30,55 @@ namespace RibbonNotepad
 		//先頭から検索をするときに呼ぶ　カーソルが自動的に移動する；
 		public void findFirst()
 		{
-			textFind(0);
+			if (findOption.findDir == FindOption.FindDirection.UP && !findOption.useRegular) textFind(mTextBox.Text.Length);
+			else textFind(0);
 		}
 
 		public void findNext()
 		{
-			textFind(mTextBox.SelectionStart + mTextBox.SelectionLength);//TODO 修正
+			if (findOption.findDir == FindOption.FindDirection.UP && !findOption.useRegular) textFind(mTextBox.SelectionStart - mTextBox.SelectionLength);//TODO 修正
+			else textFind(mTextBox.SelectionStart + mTextBox.SelectionLength);
 		}
 
 		private void textFind(int s)
 		{
+			if (s < 0) s = 0;
+			if (s > mTextBox.Text.Length) s = mTextBox.Text.Length;
 			statusTextUpdate(this, "");
 			mIsFound = true;
-			int i = find(s, findOption.text);
-			if (i == -1)
+			FindResult r = find(s, findOption.text);
+			if (r.success)
 			{
+				mTextBox.Select(r.index, r.length);
+				mTextBox.ScrollToCaret();
+			}
+			else{
 				statusTextUpdate(this, findOption.text + " が見つかりませんでした。");
 				System.Media.SystemSounds.Beep.Play();
-				mIsFound = false;
+				mIsFound = false;	
 			}
-			else mTextBox.Select(i, findOption.text.Length);
 		}
 
-		protected int find(int s, String text)
+		protected FindResult find(int s, String text)
 		{
-			return mTextBox.Text.IndexOf(text, s);
+			if (findOption.useRegular)
+			{
+				RegexOptions ropt = RegexOptions.IgnoreCase;
+				if (findOption.caseSensitive) ropt = RegexOptions.None;
+				Regex r = new Regex(text, ropt);
+				Match m = r.Match(mTextBox.Text, s);
+				return new FindResult(m);
+			}
+			if (findOption.useEscapeSequence) text = text.Replace("\\n", "\r\n").Replace("\\t", "\t").Replace("\\\\", "\\");
+			FindResult ret = new FindResult();
+			StringComparison sopt = StringComparison.OrdinalIgnoreCase;
+			if (findOption.caseSensitive) sopt = StringComparison.Ordinal;
+			if (findOption.findDir == FindOption.FindDirection.UP) ret.index = mTextBox.Text.LastIndexOf(text, s, sopt);
+			else　ret.index = mTextBox.Text.IndexOf(text, s, sopt);
+			ret.success = ret.index != -1;
+			ret.value = text;
+			ret.length = text.Length;
+			return ret;
 		}
 
 		public Boolean canFindNext()
@@ -73,5 +98,21 @@ namespace RibbonNotepad
 		public Boolean useEscapeSequence { get; set; }
 		public Boolean caseSensitive { get; set; }
 
+	}
+
+	public class FindResult
+	{
+		public Boolean success { get; set; }
+		public int index { get; set; }
+		public int length { get; set; }
+		public String value { get; set; }
+		public FindResult() { }
+		public FindResult(Match m)
+		{
+			this.success = m.Success;
+			this.index = m.Index;
+			this.length = m.Length;
+			this.value = m.Value;
+		}
 	}
 }

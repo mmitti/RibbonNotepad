@@ -213,6 +213,11 @@ namespace RibbonNotepad
 			mFindDialog.Show();
 		}
 
+		private void EditMenuItemFindNext_Click(object sender, EventArgs e)
+		{
+			mFind.findNext();
+		}
+
 
 
 	}

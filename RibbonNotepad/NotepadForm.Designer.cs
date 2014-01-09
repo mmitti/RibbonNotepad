@@ -54,13 +54,13 @@
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.EditMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.EditMenuItemDayAndData = new System.Windows.Forms.ToolStripMenuItem();
-			this.textBox1 = new RibbonNotepad.NotepadTextBox();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripRawColLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.textBox1 = new RibbonNotepad.NotepadTextBox();
 			this.menu.SuspendLayout();
 			this.statusStrip.SuspendLayout();
 			this.SuspendLayout();
@@ -259,6 +259,7 @@
 			this.EditMenuItemFindNext.ShortcutKeys = System.Windows.Forms.Keys.F3;
 			this.EditMenuItemFindNext.Size = new System.Drawing.Size(201, 22);
 			this.EditMenuItemFindNext.Text = "次を検索(&N)";
+			this.EditMenuItemFindNext.Click += new System.EventHandler(this.EditMenuItemFindNext_Click);
 			this.EditMenuItemFindNext.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// EditMenuItemReplace
@@ -299,23 +300,6 @@
 			this.EditMenuItemDayAndData.Text = "日付と時刻(&D)";
 			this.EditMenuItemDayAndData.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
-			// textBox1
-			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.textBox1.HideSelection = false;
-			this.textBox1.Location = new System.Drawing.Point(0, 29);
-			this.textBox1.MaxLength = 999999999;
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(563, 260);
-			this.textBox1.TabIndex = 1;
-			this.textBox1.TabStop = false;
-			this.textBox1.WordWrap = false;
-			// 
 			// statusStrip
 			// 
 			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -351,6 +335,23 @@
 			// openFileDialog
 			// 
 			this.openFileDialog.FileName = "openFileDialog";
+			// 
+			// textBox1
+			// 
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBox1.HideSelection = false;
+			this.textBox1.Location = new System.Drawing.Point(0, 29);
+			this.textBox1.MaxLength = 999999999;
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.textBox1.Size = new System.Drawing.Size(563, 260);
+			this.textBox1.TabIndex = 1;
+			this.textBox1.TabStop = false;
+			this.textBox1.WordWrap = false;
 			// 
 			// NotepadForm
 			// 

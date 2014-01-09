@@ -25,11 +25,11 @@ namespace RibbonNotepad
 			else FindDirDown.Checked = true;
 			textBox1.Text = find.findOption.text;
 
-			checkBoxCaseSensitive.CheckedChanged += new EventHandler(onFindOptionChanged);
-			checkBoxUseEscapeSequence.CheckedChanged += new EventHandler(onFindOptionChanged);
-			checkBoxUseRegular.CheckedChanged += new EventHandler(onFindOptionChanged);
-			FindDirDown.CheckedChanged += new EventHandler(onFindOptionChanged);
-			FindDirUp.CheckedChanged += new EventHandler(onFindOptionChanged);
+			checkBoxCaseSensitive.CheckedChanged += new EventHandler(onFindOptionCaseSensitiveChanged);
+			checkBoxUseEscapeSequence.CheckedChanged += new EventHandler(onFindOptionUseEscapeSequenceChanged);
+			checkBoxUseRegular.CheckedChanged += new EventHandler(onFindOptionUseRegualr);
+			FindDirDown.CheckedChanged += new EventHandler(onFindOptionFindDir);
+			FindDirUp.CheckedChanged += new EventHandler(onFindOptionFindDir);
 		}
 
 		public new void Show()
@@ -45,10 +45,35 @@ namespace RibbonNotepad
 			mFind.findOption.text = textBox1.Text;
 		}
 
-		private void onFindOptionChanged(object sender, EventArgs args)
+		private void onFindOptionCaseSensitiveChanged(object sender, EventArgs args)
 		{
 			mIsFindFirst = false;
+			mFind.findOption.caseSensitive = checkBoxCaseSensitive.Checked;
 		}
+
+		private void onFindOptionUseEscapeSequenceChanged(object sender, EventArgs args)
+		{
+			mIsFindFirst = false;
+			mFind.findOption.useEscapeSequence = checkBoxUseEscapeSequence.Checked;
+		}
+
+		private void onFindOptionUseRegualr(object sender, EventArgs args)
+		{
+			mIsFindFirst = false;
+			mFind.findOption.useRegular = checkBoxUseRegular.Checked;
+			checkBoxUseEscapeSequence.Enabled = groupFindDir.Enabled = !checkBoxUseRegular.Checked;
+		}
+
+		private void onFindOptionFindDir(object sender, EventArgs args)
+		{
+			mIsFindFirst = false;
+			if (((RadioButton)sender).Checked)
+			{
+				if (sender == FindDirDown) mFind.findOption.findDir = FindOption.FindDirection.DOWN;
+				else mFind.findOption.findDir = FindOption.FindDirection.UP;
+			}
+		}
+
 
 		private void buttonFindFirst_Click(object sender, EventArgs e)
 		{
@@ -83,31 +108,26 @@ namespace RibbonNotepad
 			{
 				checkBoxCaseSensitive.Checked = !checkBoxCaseSensitive.Checked;
 				checkBoxCaseSensitive.Focus();
-				mFind.findOption.caseSensitive = checkBoxCaseSensitive.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.E))
 			{
 				checkBoxUseEscapeSequence.Checked = !checkBoxUseEscapeSequence.Checked;
 				checkBoxUseEscapeSequence.Focus();
-				mFind.findOption.useEscapeSequence = checkBoxUseEscapeSequence.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.R))
 			{
 				checkBoxUseRegular.Checked = !checkBoxUseRegular.Checked;
 				checkBoxUseRegular.Focus();
-				mFind.findOption.useRegular = checkBoxUseRegular.Checked;
 			}
 			else if (keyData == (Keys.Alt | Keys.U))
 			{
 				FindDirUp.Checked = true;
 				FindDirUp.Focus();
-				mFind.findOption.findDir = FindOption.FindDirection.UP;
 			}
 			else if (keyData == (Keys.Alt | Keys.D))
 			{
 				FindDirDown.Checked = true;
 				FindDirDown.Focus(); 
-				mFind.findOption.findDir = FindOption.FindDirection.DOWN;
 			}
 			else if (keyData == (Keys.Alt | Keys.O))
 			{

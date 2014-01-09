@@ -12,3 +12,4 @@ D:\Masashi\Git\RibbonNotepad\RibbonNotepad\bin\Debug\RibbonNotepad.exe
 D:\Masashi\Git\RibbonNotepad\RibbonNotepad\bin\Debug\RibbonNotepad.pdb
 D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.exe
 D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.pdb
+D:\Masashi\Git\RibbonNotepad\RibbonNotepad\obj\x86\Debug\RibbonNotepad.csprojResolveAssemblyReference.cache

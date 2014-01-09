@@ -24,6 +24,12 @@ namespace RibbonNotepad
 			if (find.findOption.findDir == FindOption.FindDirection.UP) FindDirUp.Checked = true;
 			else FindDirDown.Checked = true;
 			textBox1.Text = find.findOption.text;
+
+			checkBoxCaseSensitive.CheckedChanged += new EventHandler(onFindOptionChanged);
+			checkBoxUseEscapeSequence.CheckedChanged += new EventHandler(onFindOptionChanged);
+			checkBoxUseRegular.CheckedChanged += new EventHandler(onFindOptionChanged);
+			FindDirDown.CheckedChanged += new EventHandler(onFindOptionChanged);
+			FindDirUp.CheckedChanged += new EventHandler(onFindOptionChanged);
 		}
 
 		public new void Show()
@@ -38,10 +44,15 @@ namespace RibbonNotepad
 			mIsFindFirst = false;
 			mFind.findOption.text = textBox1.Text;
 		}
-	 
+
+		private void onFindOptionChanged(object sender, EventArgs args)
+		{
+			mIsFindFirst = false;
+		}
 
 		private void buttonFindFirst_Click(object sender, EventArgs e)
 		{
+			if (!mFind.isFound) mIsFindFirst = false;
 			if (!mIsFindFirst)
 			{
 				mFind.findFirst();
@@ -101,12 +112,10 @@ namespace RibbonNotepad
 			else if (keyData == (Keys.Alt | Keys.O))
 			{
 				buttonFindFirst_Click(this, null);
-				mIsFindFirst = false;
 			}
 			else if (keyData == (Keys.Alt | Keys.F))
 			{
 				buttonFindNext_Click(this, null);
-				mIsFindFirst = false;
 			}
 			else
 			{

@@ -31,6 +31,7 @@ namespace RibbonNotepad
 			mFind = new Find(textBox1);
 			mFind.statusTextUpdate += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
+			textBox1.StatusTextChanged += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			mToLineDialog = new ToLineDialog();
 			ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 			String filter = "テキスト文章 (*.txt)|*.txt|C/C++ソースファイル(*.c; *.cpp)|*.c;*.cpp|すべてのファイル (*.*)|*.*";

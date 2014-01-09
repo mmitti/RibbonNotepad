@@ -12,6 +12,7 @@ namespace RibbonNotepad
 	public partial class NotepadTextBox : TextBox
 	{
 		public event EventHandler CaretChanged;
+		public event Events.StatusTextUpdateEvent StatusTextChanged;
 		[System.Runtime.InteropServices.DllImportAttribute("User32.DLL")]
 
 		public static extern int SendMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
@@ -43,6 +44,7 @@ namespace RibbonNotepad
 		{
 			base.OnKeyDown(e);
 			CaretChanged(this, null);
+			StatusTextChanged(this, "Ready");
 		}
 
 		protected override void OnKeyUp(KeyEventArgs e)
@@ -67,6 +69,7 @@ namespace RibbonNotepad
 		{
 			base.OnMouseDown(e);
 			CaretChanged(this, null);
+			StatusTextChanged(this, "Ready");
 		}
 
 		public new void Select(int start, int length)

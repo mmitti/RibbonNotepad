@@ -1,6 +1,6 @@
 ﻿namespace RibbonNotepad
 {
-	partial class FindDialog
+	partial class ReplaceDialog
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -40,6 +40,10 @@
 			this.buttonFindNext = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.buttonReplaceNext = new System.Windows.Forms.Button();
+			this.buttonReplaceAll = new System.Windows.Forms.Button();
 			this.groupFindDir.SuspendLayout();
 			this.groupOption.SuspendLayout();
 			this.SuspendLayout();
@@ -48,7 +52,7 @@
 			// 
 			this.groupFindDir.Controls.Add(this.FindDirDown);
 			this.groupFindDir.Controls.Add(this.FindDirUp);
-			this.groupFindDir.Location = new System.Drawing.Point(218, 41);
+			this.groupFindDir.Location = new System.Drawing.Point(218, 70);
 			this.groupFindDir.Name = "groupFindDir";
 			this.groupFindDir.Size = new System.Drawing.Size(139, 47);
 			this.groupFindDir.TabIndex = 0;
@@ -82,7 +86,7 @@
 			this.groupOption.Controls.Add(this.checkBoxUseRegular);
 			this.groupOption.Controls.Add(this.checkBoxUseEscapeSequence);
 			this.groupOption.Controls.Add(this.checkBoxCaseSensitive);
-			this.groupOption.Location = new System.Drawing.Point(12, 41);
+			this.groupOption.Location = new System.Drawing.Point(12, 70);
 			this.groupOption.Name = "groupOption";
 			this.groupOption.Size = new System.Drawing.Size(200, 86);
 			this.groupOption.TabIndex = 1;
@@ -148,7 +152,7 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Location = new System.Drawing.Point(370, 70);
+			this.buttonCancel.Location = new System.Drawing.Point(370, 128);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(106, 23);
 			this.buttonCancel.TabIndex = 5;
@@ -165,12 +169,52 @@
 			this.label1.TabIndex = 6;
 			this.label1.Text = "検索する文字列(&N)";
 			// 
-			// FindDialog
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(12, 41);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(102, 12);
+			this.label2.TabIndex = 7;
+			this.label2.Text = "置換後の文字列(&P)";
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(118, 38);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(239, 19);
+			this.textBox2.TabIndex = 8;
+			// 
+			// buttonReplaceNext
+			// 
+			this.buttonReplaceNext.Location = new System.Drawing.Point(370, 70);
+			this.buttonReplaceNext.Name = "buttonReplaceNext";
+			this.buttonReplaceNext.Size = new System.Drawing.Size(106, 23);
+			this.buttonReplaceNext.TabIndex = 9;
+			this.buttonReplaceNext.Text = "置換して次へ(&X)";
+			this.buttonReplaceNext.UseVisualStyleBackColor = true;
+			this.buttonReplaceNext.Click += new System.EventHandler(this.buttonReplaceNext_Click);
+			// 
+			// buttonReplaceAll
+			// 
+			this.buttonReplaceAll.Location = new System.Drawing.Point(370, 99);
+			this.buttonReplaceAll.Name = "buttonReplaceAll";
+			this.buttonReplaceAll.Size = new System.Drawing.Size(106, 23);
+			this.buttonReplaceAll.TabIndex = 10;
+			this.buttonReplaceAll.Text = "すべて置換(&A)";
+			this.buttonReplaceAll.UseVisualStyleBackColor = true;
+			this.buttonReplaceAll.Click += new System.EventHandler(this.buttonReplaceAll_Click);
+			// 
+			// ReplaceDialog
 			// 
 			this.AcceptButton = this.buttonFindNext;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(488, 137);
+			this.ClientSize = new System.Drawing.Size(488, 183);
+			this.Controls.Add(this.buttonReplaceAll);
+			this.Controls.Add(this.buttonReplaceNext);
+			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonFindNext);
@@ -181,9 +225,9 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "FindDialog";
+			this.Name = "ReplaceDialog";
 			this.ShowIcon = false;
-			this.Text = "検索";
+			this.Text = "置換";
 			this.groupFindDir.ResumeLayout(false);
 			this.groupFindDir.PerformLayout();
 			this.groupOption.ResumeLayout(false);
@@ -207,5 +251,9 @@
 		private System.Windows.Forms.Button buttonFindNext;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Button buttonReplaceNext;
+		private System.Windows.Forms.Button buttonReplaceAll;
 	}
 }

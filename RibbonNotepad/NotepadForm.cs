@@ -22,7 +22,9 @@ namespace RibbonNotepad
 		private Notepad notepad;
 		private ToLineDialog mToLineDialog;
 		private FindDialog mFindDialog;
+		private ReplaceDialog mReplaceDialog;
 		private Find mFind;
+		private Replace mReplace;
 
 
 		public NotepadForm()
@@ -30,6 +32,9 @@ namespace RibbonNotepad
 			InitializeComponent();
 			mFind = new Find(textBox1);
 			mFind.statusTextUpdate += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
+			mFindDialog = new FindDialog(mFind);
+			mReplace = new Replace(mFind, textBox1);
+			mReplaceDialog = new ReplaceDialog(mReplace);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
 			textBox1.StatusTextChanged += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			mToLineDialog = new ToLineDialog();
@@ -53,7 +58,6 @@ namespace RibbonNotepad
 		{
 			if (notepad.New())
 			{
-				//メニューやフラグ初期化
 			}
 		}
 
@@ -186,8 +190,14 @@ namespace RibbonNotepad
 			if (textBox1.CanUndo) EditMenuItemUndo.Enabled = true;
 			else EditMenuItemUndo.Enabled = false;
 
-			this.EditMenuItemFindNext.Enabled = mFind.canFindNext();
+			this.EditMenuItemFindNext.Enabled = textBox1.Text.Length > 0;
 		}
+
+		private void EditMenu_DropDownClosed(object sender, EventArgs e)
+		{
+			this.EditMenuItemFindNext.Enabled = true;
+		}
+
 
 		private void NotepadForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -210,15 +220,30 @@ namespace RibbonNotepad
 
 		private void EditMenuItemFind_Click(object sender, EventArgs e)
 		{
+			if (mFindDialog.Visible) return;
+			if (mReplaceDialog.Visible) mReplaceDialog.Close();
 			mFindDialog = new FindDialog(mFind);
+			mFindDialog.Owner = this;
 			mFindDialog.Show();
 		}
 
 		private void EditMenuItemFindNext_Click(object sender, EventArgs e)
 		{
-			mFind.findNext();
+			if (textBox1.Text.Length == 0) return;
+			if (mFind.canFindNext()) mFind.findNext();
+			else EditMenuItemFind_Click(this, null);
 		}
 
+		private void EditMenuItemReplace_Click(object sender, EventArgs e)
+		{
+			if (mReplaceDialog.Visible) return;
+			if (mFindDialog.Visible) mFindDialog.Close();
+			mReplaceDialog = new ReplaceDialog(mReplace);
+			mReplaceDialog.Owner = this;
+			mReplaceDialog.Show();
+		}
+
+	
 
 
 	}

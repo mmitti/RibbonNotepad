@@ -185,6 +185,7 @@
 			this.EditMenu.Name = "EditMenu";
 			this.EditMenu.Size = new System.Drawing.Size(61, 22);
 			this.EditMenu.Text = "編集(&E)";
+			this.EditMenu.DropDownClosed += new System.EventHandler(this.EditMenu_DropDownClosed);
 			this.EditMenu.DropDownOpened += new System.EventHandler(this.EditMenu_DropDownOpened);
 			this.EditMenu.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			this.EditMenu.MouseLeave += new System.EventHandler(this.menu_MenuDeactivate);
@@ -268,6 +269,7 @@
 			this.EditMenuItemReplace.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
 			this.EditMenuItemReplace.Size = new System.Drawing.Size(201, 22);
 			this.EditMenuItemReplace.Text = "置換(&R)";
+			this.EditMenuItemReplace.Click += new System.EventHandler(this.EditMenuItemReplace_Click);
 			this.EditMenuItemReplace.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// EditMenuItemMoveToLine

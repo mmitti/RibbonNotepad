@@ -70,11 +70,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replace.cs" />
     <Compile Include="ToLineDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ToLineDialog.Designer.cs">
       <DependentUpon>ToLineDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReplaceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReplaceDialog.Designer.cs">
+      <DependentUpon>ReplaceDialog.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
@@ -94,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="ToLineDialog.resx">
       <DependentUpon>ToLineDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReplaceDialog.resx">
+      <DependentUpon>ReplaceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

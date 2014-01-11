@@ -137,6 +137,10 @@ namespace RibbonNotepad
 			{
 				buttonFindNext_Click(this, null);
 			}
+			else if (keyData == Keys.Escape)
+			{
+				this.Close();
+			}
 			else
 			{
 				return base.ProcessCmdKey(ref msg, keyData);

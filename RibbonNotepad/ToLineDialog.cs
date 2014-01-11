@@ -26,6 +26,11 @@ namespace RibbonNotepad
 				numericUpDown1.Focus();
 				return true;
 			}
+			else if (keyData == Keys.Escape)
+			{
+				this.Close();
+				return true;
+			}
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 

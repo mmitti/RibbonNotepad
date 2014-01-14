@@ -10,10 +10,12 @@ namespace RibbonNotepad
 	{
 		private NotepadTextBox mTextBox;
 		public FindOption findOption;
+		private FindResult mFindResult;
 		private int mCurrentIndex;
 		public event Events.StatusTextUpdateEvent statusTextUpdate;
 		private Boolean mIsFound;
 		public Boolean isFound { get { return mIsFound; } }
+		public FindResult result { get { return mFindResult; } }
 
 		public Find(NotepadTextBox textbox)
 		{
@@ -42,14 +44,12 @@ namespace RibbonNotepad
 
 		private void textFind(int s)
 		{
-			if (s < 0) s = 0;
-			if (s > mTextBox.Text.Length) s = mTextBox.Text.Length;
 			statusTextUpdate(this, "");
 			mIsFound = true;
-			FindResult r = find(s, findOption.text);
-			if (r.success)
+			mFindResult = find(s, findOption.text);
+			if (mFindResult.success)
 			{
-				mTextBox.Select(r.index, r.length);
+				mTextBox.Select(mFindResult.index, mFindResult.length);
 				mTextBox.ScrollToCaret();
 			}
 			else{
@@ -61,6 +61,7 @@ namespace RibbonNotepad
 
 		protected FindResult find(int s, String text)
 		{
+			if (s < 0 || s > mTextBox.Text.Length) return new FindResult(false);
 			if (findOption.useRegular)
 			{
 				RegexOptions ropt = RegexOptions.IgnoreCase;
@@ -107,6 +108,10 @@ namespace RibbonNotepad
 		public int length { get; set; }
 		public String value { get; set; }
 		public FindResult() { }
+		public FindResult(Boolean success)
+		{
+			this.success = success;
+		}
 		public FindResult(Match m)
 		{
 			this.success = m.Success;

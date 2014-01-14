@@ -163,12 +163,18 @@ namespace RibbonNotepad
 
 		private void buttonReplaceNext_Click(object sender, EventArgs e)
 		{
-
+			mReplace.replace();
 		}
 
 		private void buttonReplaceAll_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void textBox2_TextChanged(object sender, EventArgs e)
+		{
+			mIsFindFirst = false;
+			mReplace.replaceText = textBox2.Text;
 		}
 
 	}

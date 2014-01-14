@@ -11,7 +11,6 @@ namespace RibbonNotepad
 		private NotepadTextBox mTextBox;
 		public FindOption findOption;
 		private FindResult mFindResult;
-		private int mCurrentIndex;
 		public event Events.StatusTextUpdateEvent statusTextUpdate;
 		private Boolean mIsFound;
 		public Boolean isFound { get { return mIsFound; } }

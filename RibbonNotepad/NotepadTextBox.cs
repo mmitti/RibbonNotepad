@@ -18,9 +18,37 @@ namespace RibbonNotepad
 		public static extern int SendMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
 		public const int EM_LINEINDEX = 0x00BB;
 		private const int EM_LINEFROMCHAR = 0xC9;
+		private String mUndoBuf = String.Empty;
+		public new bool CanUndo {
+			get {
+				return base.CanUndo?true:mUndoBuf != String.Empty; 
+			} 
+		}
+
 		public NotepadTextBox()
 		{
 			InitializeComponent();
+		}
+
+		public new void Undo()
+		{
+			if(base.CanUndo)base.Undo();
+			else if (mUndoBuf != String.Empty)
+			{
+				Text = mUndoBuf;
+			}
+
+		}
+
+		public new void ClearUndo()
+		{
+			base.ClearUndo();
+			mUndoBuf = String.Empty;
+		}
+
+		public void createUndoBuf()
+		{
+			mUndoBuf = Text;
 		}
 
 		public void ToLine(int line)
@@ -40,6 +68,7 @@ namespace RibbonNotepad
 			return this.SelectionStart - lineIndex + 1;
 		}
 
+		
 		protected override void OnKeyDown(KeyEventArgs e)
 		{
 			base.OnKeyDown(e);

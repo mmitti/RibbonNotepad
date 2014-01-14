@@ -34,6 +34,7 @@ namespace RibbonNotepad
 			mFind.statusTextUpdate += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			mFindDialog = new FindDialog(mFind);
 			mReplace = new Replace(mFind, textBox1);
+			mReplace.statusTextUpdate += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			mReplaceDialog = new ReplaceDialog(mReplace);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
 			textBox1.StatusTextChanged += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
@@ -136,7 +137,6 @@ namespace RibbonNotepad
 			{
 				textBox1.Undo();
 				textBox1.ClearUndo();
-				EditMenuItemUndo.Enabled = false;
 			}
 		}
 
@@ -187,8 +187,7 @@ namespace RibbonNotepad
 			this.EditMenuItemCut.Enabled = text_menu_item_enable;
 			this.EditMenuItemCopy.Enabled = text_menu_item_enable;
 			this.EditMenuItemDel.Enabled = text_menu_item_enable;
-			if (textBox1.CanUndo) EditMenuItemUndo.Enabled = true;
-			else EditMenuItemUndo.Enabled = false;
+			EditMenuItemUndo.Enabled = textBox1.CanUndo;
 
 			this.EditMenuItemFindNext.Enabled = textBox1.Text.Length > 0;
 		}
@@ -196,6 +195,7 @@ namespace RibbonNotepad
 		private void EditMenu_DropDownClosed(object sender, EventArgs e)
 		{
 			this.EditMenuItemFindNext.Enabled = true;
+			EditMenuItemUndo.Enabled = true;
 		}
 
 

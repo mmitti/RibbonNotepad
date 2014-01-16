@@ -57,6 +57,8 @@
 			this.OptionMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.OptionMenuItemWrap = new System.Windows.Forms.ToolStripMenuItem();
 			this.OptionMenuItemFont = new System.Windows.Forms.ToolStripMenuItem();
+			this.ViewMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.ViewMenuItemStatus = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -64,6 +66,8 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.textBox1 = new RibbonNotepad.NotepadTextBox();
+			this.HelpMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.HelpMenuItemVersion = new System.Windows.Forms.ToolStripMenuItem();
 			this.menu.SuspendLayout();
 			this.statusStrip.SuspendLayout();
 			this.SuspendLayout();
@@ -73,10 +77,12 @@
 			this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
             this.EditMenu,
-            this.OptionMenu});
+            this.OptionMenu,
+            this.ViewMenu,
+            this.HelpMenu});
 			this.menu.Location = new System.Drawing.Point(0, 0);
 			this.menu.Name = "menu";
-			this.menu.Size = new System.Drawing.Size(563, 26);
+			this.menu.Size = new System.Drawing.Size(367, 26);
 			this.menu.TabIndex = 0;
 			this.menu.Text = "menu";
 			this.menu.MenuDeactivate += new System.EventHandler(this.menu_MenuDeactivate);
@@ -332,15 +338,33 @@
 			this.OptionMenuItemFont.Text = "フォント(&F)...";
 			this.OptionMenuItemFont.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
+			// ViewMenu
+			// 
+			this.ViewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewMenuItemStatus});
+			this.ViewMenu.Name = "ViewMenu";
+			this.ViewMenu.Size = new System.Drawing.Size(62, 22);
+			this.ViewMenu.Text = "表示(&V)";
+			this.ViewMenu.DropDownOpened += new System.EventHandler(this.ViewMenu_DropDownOpened);
+			this.ViewMenu.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
+			// ViewMenuItemStatus
+			// 
+			this.ViewMenuItemStatus.Name = "ViewMenuItemStatus";
+			this.ViewMenuItemStatus.Size = new System.Drawing.Size(182, 22);
+			this.ViewMenuItemStatus.Text = "ステータス バー(&S)";
+			this.ViewMenuItemStatus.Click += new System.EventHandler(this.ViewMenuItemStatus_Click);
+			this.ViewMenuItemStatus.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
 			// statusStrip
 			// 
 			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.toolStripSeparator6,
             this.toolStripRawColLabel});
-			this.statusStrip.Location = new System.Drawing.Point(0, 292);
+			this.statusStrip.Location = new System.Drawing.Point(0, 152);
 			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(563, 23);
+			this.statusStrip.Size = new System.Drawing.Size(367, 23);
 			this.statusStrip.TabIndex = 2;
 			this.statusStrip.Text = "statusStrip";
 			// 
@@ -380,17 +404,33 @@
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox1.Size = new System.Drawing.Size(563, 260);
+			this.textBox1.Size = new System.Drawing.Size(367, 120);
 			this.textBox1.TabIndex = 1;
 			this.textBox1.TabStop = false;
 			this.textBox1.WordWrap = false;
+			// 
+			// HelpMenu
+			// 
+			this.HelpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HelpMenuItemVersion});
+			this.HelpMenu.Name = "HelpMenu";
+			this.HelpMenu.Size = new System.Drawing.Size(75, 22);
+			this.HelpMenu.Text = "ヘルプ(&H)";
+			this.HelpMenu.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
+			// HelpMenuItemVersion
+			// 
+			this.HelpMenuItemVersion.Name = "HelpMenuItemVersion";
+			this.HelpMenuItemVersion.Size = new System.Drawing.Size(178, 22);
+			this.HelpMenuItemVersion.Text = "バージョン情報(&V)";
+			this.HelpMenuItemVersion.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// NotepadForm
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(563, 315);
+			this.ClientSize = new System.Drawing.Size(367, 175);
 			this.Controls.Add(this.statusStrip);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.menu);
@@ -448,6 +488,10 @@
 		private System.Windows.Forms.ToolStripMenuItem OptionMenu;
 		private System.Windows.Forms.ToolStripMenuItem OptionMenuItemWrap;
 		private System.Windows.Forms.ToolStripMenuItem OptionMenuItemFont;
+		private System.Windows.Forms.ToolStripMenuItem ViewMenu;
+		private System.Windows.Forms.ToolStripMenuItem ViewMenuItemStatus;
+		private System.Windows.Forms.ToolStripMenuItem HelpMenu;
+		private System.Windows.Forms.ToolStripMenuItem HelpMenuItemVersion;
 
 	}
 }

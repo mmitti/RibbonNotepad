@@ -232,6 +232,24 @@ namespace RibbonNotepad.Properties {
         }
         
         /// <summary>
+        ///   ヘルプ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextHelpMenu {
+            get {
+                return ResourceManager.GetString("StatusTextHelpMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   バージョン情報 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextHelpMenuItemVersion {
+            get {
+                return ResourceManager.GetString("StatusTextHelpMenuItemVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   書式設定とオプション に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string StatusTextOptionMenu {
@@ -255,6 +273,24 @@ namespace RibbonNotepad.Properties {
         internal static string StatusTextOptionMenuItemWrap {
             get {
                 return ResourceManager.GetString("StatusTextOptionMenuItemWrap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   表示設定 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextViewMenu {
+            get {
+                return ResourceManager.GetString("StatusTextViewMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ステータスバー に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextViewMenuItemStatus {
+            get {
+                return ResourceManager.GetString("StatusTextViewMenuItemStatus", resourceCulture);
             }
         }
     }

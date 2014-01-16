@@ -265,8 +265,18 @@ namespace RibbonNotepad
 			toolStripRawColLabel.Visible = !textBox1.WordWrap;
 		}
 
+		private void ViewMenu_DropDownOpened(object sender, EventArgs e)
+		{
+			ViewMenuItemStatus.Checked = statusStrip.Visible;
+		}
 
-	
+		private void ViewMenuItemStatus_Click(object sender, EventArgs e)
+		{
+			statusStrip.Visible = !statusStrip.Visible;
+			if (statusStrip.Visible) textBox1.Height -= statusStrip.Height;
+			else textBox1.Height += statusStrip.Height;
+		}
+
 		private void NotepadForm_DragEnter(object sender, DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -288,11 +298,6 @@ namespace RibbonNotepad
 			//複数に対応
 			notepad.OpenAs(files[0]);
 		}
-
-	
-		
-	
-
 
 	}
 }

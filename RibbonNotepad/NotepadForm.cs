@@ -45,7 +45,6 @@ namespace RibbonNotepad
 			openFileDialog.Filter = filter;
 			saveFileDialog.Title = "名前を付けて保存";
 			saveFileDialog.Filter = filter;
-			onStatusTextUpdate(this, "Ready");
 
 			notepad = new Notepad(this.textBox1);
 			notepad.statusTextUpdateEvent += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
@@ -53,12 +52,24 @@ namespace RibbonNotepad
 			notepad.fileOpenHandler = new FileDialogHandler.FileOpenHandler(OpenFile);
 			notepad.fileSaveHandler = new FileDialogHandler.FileSaveHandler(SaveFile);
 			init();
+			checkCmdArgs();
+		}
+
+		private void checkCmdArgs()
+		{
+			string[] cmds = System.Environment.GetCommandLineArgs();
+			for (int i = 1; i < cmds.Length; i++)
+			{
+				//引数処理
+				notepad.OpenAs(cmds[i]);
+			}
 		}
 
 		private void init()
 		{
 			if (notepad.New())
 			{
+				onStatusTextUpdate(this, "Ready");
 			}
 		}
 
@@ -243,6 +254,43 @@ namespace RibbonNotepad
 			mReplaceDialog.Show();
 		}
 
+		private void OptionMenu_DropDownOpened(object sender, EventArgs e)
+		{
+			OptionMenuItemWrap.Checked = textBox1.WordWrap;
+		}
+
+		private void OptionMenuItemWrap_Click(object sender, EventArgs e)
+		{
+			textBox1.WordWrap = !textBox1.WordWrap;
+			toolStripRawColLabel.Visible = !textBox1.WordWrap;
+		}
+
+
+	
+		private void NotepadForm_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+			{
+				string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+				foreach(string f in files){
+					if (!System.IO.File.Exists(f)){
+						e.Effect = DragDropEffects.None;
+						return;
+					}
+				}
+				e.Effect = DragDropEffects.Copy;
+			}
+		}
+
+		private void NotepadForm_DragDrop(object sender, DragEventArgs e)
+		{
+			string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+			//複数に対応
+			notepad.OpenAs(files[0]);
+		}
+
+	
+		
 	
 
 

@@ -230,5 +230,32 @@ namespace RibbonNotepad.Properties {
                 return ResourceManager.GetString("StatusTextFileMenuItemSaveAs", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   書式設定とオプション に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextOptionMenu {
+            get {
+                return ResourceManager.GetString("StatusTextOptionMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   フォント設定 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextOptionMenuItemFont {
+            get {
+                return ResourceManager.GetString("StatusTextOptionMenuItemFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   右端で折り返す に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextOptionMenuItemWrap {
+            get {
+                return ResourceManager.GetString("StatusTextOptionMenuItemWrap", resourceCulture);
+            }
+        }
     }
 }

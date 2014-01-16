@@ -65,16 +65,22 @@ namespace RibbonNotepad
 			sw.Close();
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
+			statusTextUpdateEvent(this, "保存しました。");
 		}
 
 		private void readFile(String path)
 		{
+			if (!File.Exists(path)) {
+				MessageBox.Show("ファイルが見つかりません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 			StreamReader sr = new StreamReader(path, Encoding.GetEncoding("Shift_JIS"));
 			String s = sr.ReadToEnd();
 			mText.Text = s;
 			sr.Close();
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
+			statusTextUpdateEvent(this, "ファイルを開きました。");
 		}
 
 		public Boolean SaveAs()
@@ -105,6 +111,21 @@ namespace RibbonNotepad
 				mIsTextChanged = false;
 				updateCaption();
 			}
+		}
+
+		public void OpenAs(String path)
+		{
+			if (mIsTextChanged)
+			{
+				if (MessageBox.Show("変更されているけど保存するかい?", null, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				{
+					if (!Save()) return;
+				}
+			}
+			readFile(path);
+			mIsTextChanged = false;
+			updateCaption();
+			
 		}
 
 		private void onTextChanged(object sender, System.EventArgs e)

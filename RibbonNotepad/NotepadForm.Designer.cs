@@ -54,6 +54,9 @@
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.EditMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
 			this.EditMenuItemDayAndData = new System.Windows.Forms.ToolStripMenuItem();
+			this.OptionMenu = new System.Windows.Forms.ToolStripMenuItem();
+			this.OptionMenuItemWrap = new System.Windows.Forms.ToolStripMenuItem();
+			this.OptionMenuItemFont = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -69,7 +72,8 @@
 			// 
 			this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenu,
-            this.EditMenu});
+            this.EditMenu,
+            this.OptionMenu});
 			this.menu.Location = new System.Drawing.Point(0, 0);
 			this.menu.Name = "menu";
 			this.menu.Size = new System.Drawing.Size(563, 26);
@@ -194,7 +198,7 @@
 			// 
 			this.EditMenuItemUndo.Name = "EditMenuItemUndo";
 			this.EditMenuItemUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-			this.EditMenuItemUndo.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemUndo.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemUndo.Text = "元に戻す(&U)";
 			this.EditMenuItemUndo.Click += new System.EventHandler(this.EditMenuItemUndo_Click);
 			this.EditMenuItemUndo.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -202,13 +206,13 @@
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(198, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(200, 6);
 			// 
 			// EditMenuItemCut
 			// 
 			this.EditMenuItemCut.Name = "EditMenuItemCut";
 			this.EditMenuItemCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.EditMenuItemCut.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemCut.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemCut.Text = "切り取り(&T)";
 			this.EditMenuItemCut.Click += new System.EventHandler(this.EditMenuItemCut_Click);
 			this.EditMenuItemCut.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -217,7 +221,7 @@
 			// 
 			this.EditMenuItemCopy.Name = "EditMenuItemCopy";
 			this.EditMenuItemCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.EditMenuItemCopy.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemCopy.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemCopy.Text = "コピー(&C)";
 			this.EditMenuItemCopy.Click += new System.EventHandler(this.EditMenuItemCopy_Click);
 			this.EditMenuItemCopy.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -226,7 +230,7 @@
 			// 
 			this.EditMenuItemPaste.Name = "EditMenuItemPaste";
 			this.EditMenuItemPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-			this.EditMenuItemPaste.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemPaste.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemPaste.Text = "貼り付け(&P)";
 			this.EditMenuItemPaste.Click += new System.EventHandler(this.EditMenuItemPaste_Click);
 			this.EditMenuItemPaste.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -235,7 +239,7 @@
 			// 
 			this.EditMenuItemDel.Name = "EditMenuItemDel";
 			this.EditMenuItemDel.ShortcutKeyDisplayString = "Del";
-			this.EditMenuItemDel.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemDel.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemDel.Text = "削除(L)";
 			this.EditMenuItemDel.Click += new System.EventHandler(this.EditMenuItemDel_Click);
 			this.EditMenuItemDel.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -243,14 +247,14 @@
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(198, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(200, 6);
 			// 
 			// EditMenuItemFind
 			// 
 			this.EditMenuItemFind.Name = "EditMenuItemFind";
 			this.EditMenuItemFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.EditMenuItemFind.Size = new System.Drawing.Size(201, 22);
-			this.EditMenuItemFind.Text = "検索(&F)";
+			this.EditMenuItemFind.Size = new System.Drawing.Size(203, 22);
+			this.EditMenuItemFind.Text = "検索(&F)...";
 			this.EditMenuItemFind.Click += new System.EventHandler(this.EditMenuItemFind_Click);
 			this.EditMenuItemFind.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
@@ -258,7 +262,7 @@
 			// 
 			this.EditMenuItemFindNext.Name = "EditMenuItemFindNext";
 			this.EditMenuItemFindNext.ShortcutKeys = System.Windows.Forms.Keys.F3;
-			this.EditMenuItemFindNext.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemFindNext.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemFindNext.Text = "次を検索(&N)";
 			this.EditMenuItemFindNext.Click += new System.EventHandler(this.EditMenuItemFindNext_Click);
 			this.EditMenuItemFindNext.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -267,8 +271,8 @@
 			// 
 			this.EditMenuItemReplace.Name = "EditMenuItemReplace";
 			this.EditMenuItemReplace.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-			this.EditMenuItemReplace.Size = new System.Drawing.Size(201, 22);
-			this.EditMenuItemReplace.Text = "置換(&R)";
+			this.EditMenuItemReplace.Size = new System.Drawing.Size(203, 22);
+			this.EditMenuItemReplace.Text = "置換(&R)...";
 			this.EditMenuItemReplace.Click += new System.EventHandler(this.EditMenuItemReplace_Click);
 			this.EditMenuItemReplace.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
@@ -276,21 +280,21 @@
 			// 
 			this.EditMenuItemMoveToLine.Name = "EditMenuItemMoveToLine";
 			this.EditMenuItemMoveToLine.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-			this.EditMenuItemMoveToLine.Size = new System.Drawing.Size(201, 22);
-			this.EditMenuItemMoveToLine.Text = "行へ移動(&G)";
+			this.EditMenuItemMoveToLine.Size = new System.Drawing.Size(203, 22);
+			this.EditMenuItemMoveToLine.Text = "行へ移動(&G)...";
 			this.EditMenuItemMoveToLine.Click += new System.EventHandler(this.EditMenuItemMoveToLine_Click);
 			this.EditMenuItemMoveToLine.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(198, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(200, 6);
 			// 
 			// EditMenuItemSelectAll
 			// 
 			this.EditMenuItemSelectAll.Name = "EditMenuItemSelectAll";
 			this.EditMenuItemSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-			this.EditMenuItemSelectAll.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemSelectAll.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemSelectAll.Text = "すべて選択(&A)";
 			this.EditMenuItemSelectAll.Click += new System.EventHandler(this.EditMenuItemSelectAll_Click);
 			this.EditMenuItemSelectAll.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
@@ -298,9 +302,35 @@
 			// EditMenuItemDayAndData
 			// 
 			this.EditMenuItemDayAndData.Name = "EditMenuItemDayAndData";
-			this.EditMenuItemDayAndData.Size = new System.Drawing.Size(201, 22);
+			this.EditMenuItemDayAndData.Size = new System.Drawing.Size(203, 22);
 			this.EditMenuItemDayAndData.Text = "日付と時刻(&D)";
 			this.EditMenuItemDayAndData.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
+			// OptionMenu
+			// 
+			this.OptionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OptionMenuItemWrap,
+            this.OptionMenuItemFont});
+			this.OptionMenu.Name = "OptionMenu";
+			this.OptionMenu.Size = new System.Drawing.Size(63, 22);
+			this.OptionMenu.Text = "書式(&O)";
+			this.OptionMenu.DropDownOpened += new System.EventHandler(this.OptionMenu_DropDownOpened);
+			this.OptionMenu.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
+			// OptionMenuItemWrap
+			// 
+			this.OptionMenuItemWrap.Name = "OptionMenuItemWrap";
+			this.OptionMenuItemWrap.Size = new System.Drawing.Size(182, 22);
+			this.OptionMenuItemWrap.Text = "右端で折り返す(&W)";
+			this.OptionMenuItemWrap.Click += new System.EventHandler(this.OptionMenuItemWrap_Click);
+			this.OptionMenuItemWrap.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
+			// 
+			// OptionMenuItemFont
+			// 
+			this.OptionMenuItemFont.Name = "OptionMenuItemFont";
+			this.OptionMenuItemFont.Size = new System.Drawing.Size(182, 22);
+			this.OptionMenuItemFont.Text = "フォント(&F)...";
+			this.OptionMenuItemFont.MouseEnter += new System.EventHandler(this.menu_MouseEnter);
 			// 
 			// statusStrip
 			// 
@@ -357,6 +387,7 @@
 			// 
 			// NotepadForm
 			// 
+			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(563, 315);
@@ -367,6 +398,8 @@
 			this.Name = "NotepadForm";
 			this.Text = "Form1";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NotepadForm_FormClosing);
+			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.NotepadForm_DragDrop);
+			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.NotepadForm_DragEnter);
 			this.menu.ResumeLayout(false);
 			this.menu.PerformLayout();
 			this.statusStrip.ResumeLayout(false);
@@ -412,6 +445,9 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripRawColLabel;
 
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+		private System.Windows.Forms.ToolStripMenuItem OptionMenu;
+		private System.Windows.Forms.ToolStripMenuItem OptionMenuItemWrap;
+		private System.Windows.Forms.ToolStripMenuItem OptionMenuItemFont;
 
 	}
 }

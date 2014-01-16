@@ -28,6 +28,7 @@ namespace RibbonNotepad
 		public NotepadTextBox()
 		{
 			InitializeComponent();
+			
 		}
 
 		public new void Undo()

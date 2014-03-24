@@ -40,17 +40,17 @@ namespace RibbonNotepad
 			textBox1.StatusTextChanged += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			mToLineDialog = new ToLineDialog();
 			ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-			String filter = "テキスト文章 (*.txt)|*.txt|C/C++ソースファイル(*.c; *.cpp)|*.c;*.cpp|すべてのファイル (*.*)|*.*";
-			openFileDialog.Title = "開く";
-			openFileDialog.Filter = filter;
-			saveFileDialog.Title = "名前を付けて保存";
-			saveFileDialog.Filter = filter;
+			    String filter = "テキスト文章 (*.txt)|*.txt|C/C++ソースファイル(*.c; *.cpp)|*.c;*.cpp|すべてのファイル (*.*)|*.*";
+			    openFileDialog.Title = "開く";
+			    openFileDialog.Filter = filter;
+			    saveFileDialog.Title = "名前を付けて保存";
+			    saveFileDialog.Filter = filter;
 
-			notepad = new Notepad(this.textBox1);
+    			notepad = new Notepad(this.textBox1);
 			notepad.statusTextUpdateEvent += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
 			notepad.windowCaptionChangedEvent += new Events.WindowCaptionChangedEvent(onWindowCaptionChanged);
-			notepad.fileOpenHandler = new FileDialogHandler.FileOpenHandler(OpenFile);
-			notepad.fileSaveHandler = new FileDialogHandler.FileSaveHandler(SaveFile);
+			    notepad.fileOpenHandler = new FileDialogHandler.FileOpenHandler(OpenFile);
+			    notepad.fileSaveHandler = new FileDialogHandler.FileSaveHandler(SaveFile);
 			init();
 			checkCmdArgs();
 		}
@@ -65,13 +65,13 @@ namespace RibbonNotepad
 			}
 		}
 
-		private void init()
-		{
-			if (notepad.New())
-			{
-				onStatusTextUpdate(this, "Ready");
-			}
-		}
+		    private void init()
+		    {
+			    if (notepad.New())
+			    {
+				    onStatusTextUpdate(this, "Ready");
+			    }
+		    }
 
 		private void onWindowCaptionChanged(object sender, String caption){
 			this.Text = ASSEMBLY_NAME +" - "+caption;
@@ -82,22 +82,22 @@ namespace RibbonNotepad
 			toolStripStatusLabel.Text = text;
 		}
 
-		private FileDialogHandler.Result OpenFile()
-		{
-			openFileDialog.FileName = "";
-			openFileDialog.FilterIndex = 1;
-			if (openFileDialog.ShowDialog() == DialogResult.OK) return new FileDialogHandler.Result(openFileDialog.FileName);
-			return FileDialogHandler.CANCEL;
-		}
+		    private FileDialogHandler.Result OpenFile()
+		    {
+			    openFileDialog.FileName = "";
+			    openFileDialog.FilterIndex = 1;
+			    if (openFileDialog.ShowDialog() == DialogResult.OK) return new FileDialogHandler.Result(openFileDialog.FileName);
+			    return FileDialogHandler.CANCEL;
+		    }
 
-		private FileDialogHandler.Result SaveFile()
-		{
+		    private FileDialogHandler.Result SaveFile()
+		    {
 
-			saveFileDialog.FileName = "*.txt";
-			saveFileDialog.FilterIndex = 1;
-			if (saveFileDialog.ShowDialog() == DialogResult.OK) return new FileDialogHandler.Result(saveFileDialog.FileName);
-			return FileDialogHandler.CANCEL;
-		}
+			    saveFileDialog.FileName = "*.txt";
+			    saveFileDialog.FilterIndex = 1;
+			    if (saveFileDialog.ShowDialog() == DialogResult.OK) return new FileDialogHandler.Result(saveFileDialog.FileName);
+			    return FileDialogHandler.CANCEL;
+		    }
 
 		private void menu_MenuDeactivate(object sender, EventArgs e)
 		{
@@ -117,30 +117,30 @@ namespace RibbonNotepad
 			onStatusTextUpdate(this, ASSEMBLY_NAME + "を終了");
 		}
 
-		private void FileMenuItemNew_Click(object sender, EventArgs e)
-		{
-			init();
-		}
+		    private void FileMenuItemNew_Click(object sender, EventArgs e)
+		    {
+			    init();
+		    }
 
-		private void FileMenuItemOpen_Click(object sender, EventArgs e)
-		{
-			notepad.Open();
-		}
+		    private void FileMenuItemOpen_Click(object sender, EventArgs e)
+		    {
+			    notepad.Open();
+		    }
 
-		private void FileMenuItemSave_Click(object sender, EventArgs e)
-		{
-			notepad.Save();
-		}
+		    private void FileMenuItemSave_Click(object sender, EventArgs e)
+		    {
+			    notepad.Save();
+		    }
 
-		private void FileMenuItemSaveAs_Click(object sender, EventArgs e)
-		{
-			notepad.SaveAs();
-		}
+		    private void FileMenuItemSaveAs_Click(object sender, EventArgs e)
+		    {
+			    notepad.SaveAs();
+		    }
 
-		private void FileMenuItemExit_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		    private void FileMenuItemExit_Click(object sender, EventArgs e)
+		    {
+			    this.Close();
+		    }
 
 		private void EditMenuItemUndo_Click(object sender, EventArgs e)
 		{
@@ -210,10 +210,10 @@ namespace RibbonNotepad
 		}
 
 
-		private void NotepadForm_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			notepad.Exit(e);
-		}
+		    private void NotepadForm_FormClosing(object sender, FormClosingEventArgs e)
+		    {
+			    notepad.Exit(e);
+		    }
 
 		private void OnRowColChanged(object sender, object e)
 		{

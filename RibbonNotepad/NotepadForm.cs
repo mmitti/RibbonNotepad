@@ -142,49 +142,49 @@ namespace RibbonNotepad
 			    this.Close();
 		    }
 
-		private void EditMenuItemUndo_Click(object sender, EventArgs e)
-		{
-			if (textBox1.CanUndo)
-			{
-				textBox1.Undo();
-				textBox1.ClearUndo();
-			}
-		}
+		    private void EditMenuItemUndo_Click(object sender, EventArgs e)
+		    {
+			    if (textBox1.CanUndo)
+			    {
+				    textBox1.Undo();
+				    textBox1.ClearUndo();
+			    }
+		    }
 
-		private void EditMenuItemCut_Click(object sender, EventArgs e)
-		{
-			if (textBox1.SelectionLength > 0)
-			{
-				textBox1.Cut();
-			}
-		}
+		    private void EditMenuItemCut_Click(object sender, EventArgs e)
+		    {
+			    if (textBox1.SelectionLength > 0)
+			    {
+				    textBox1.Cut();
+			    }
+		    }
 
-		private void EditMenuItemCopy_Click(object sender, EventArgs e)
-		{
-			if (textBox1.SelectionLength > 0)
-			{
-				textBox1.Copy();
-			}
-		}
+		    private void EditMenuItemCopy_Click(object sender, EventArgs e)
+		    {
+			    if (textBox1.SelectionLength > 0)
+			    {
+				    textBox1.Copy();
+			    }
+		    }
 
-		private void EditMenuItemPaste_Click(object sender, EventArgs e)
-		{
-			textBox1.Paste();
-		}
+		    private void EditMenuItemPaste_Click(object sender, EventArgs e)
+		    {
+			    textBox1.Paste();
+		    }
 
-		private void EditMenuItemDel_Click(object sender, EventArgs e)
-		{
-			if (textBox1.SelectionLength > 0)
-			{
-				textBox1.SelectedText = "";
-			}
-		}
+		    private void EditMenuItemDel_Click(object sender, EventArgs e)
+		    {
+			    if (textBox1.SelectionLength > 0)
+			    {
+				    textBox1.SelectedText = "";
+			    }
+		    }
 
-		private void EditMenuItemSelectAll_Click(object sender, EventArgs e)
-		{
-			textBox1.SelectionStart = 0;
-			textBox1.SelectionLength = textBox1.TextLength;
-		}
+		    private void EditMenuItemSelectAll_Click(object sender, EventArgs e)
+		    {
+			    textBox1.SelectionStart = 0;
+			    textBox1.SelectionLength = textBox1.TextLength;
+		    }
 
 		private void EditMenu_DropDownOpened(object sender, EventArgs e)
 		{
@@ -259,11 +259,11 @@ namespace RibbonNotepad
 			OptionMenuItemWrap.Checked = textBox1.WordWrap;
 		}
 
-		private void OptionMenuItemWrap_Click(object sender, EventArgs e)
-		{
-			textBox1.WordWrap = !textBox1.WordWrap;
-			toolStripRawColLabel.Visible = !textBox1.WordWrap;
-		}
+		    private void OptionMenuItemWrap_Click(object sender, EventArgs e)
+		    {
+			    textBox1.WordWrap = !textBox1.WordWrap;
+			    toolStripRawColLabel.Visible = !textBox1.WordWrap;
+		    }
 
 		private void ViewMenu_DropDownOpened(object sender, EventArgs e)
 		{

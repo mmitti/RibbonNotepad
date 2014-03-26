@@ -13,8 +13,8 @@ namespace RibbonNotepad
 		private Boolean mIsTextChanged;
 		private String mFilePath;
 		private String mFileName;
-//		public event Events.WindowCaptionChangedEvent windowCaptionChangedEvent;
-//		public event Events.StatusTextUpdateEvent statusTextUpdateEvent;
+		public event Events.WindowCaptionChangedEvent windowCaptionChangedEvent;
+		public event Events.StatusTextUpdateEvent statusTextUpdateEvent;
 		public FileDialogHandler.FileOpenHandler fileOpenHandler;
 		public FileDialogHandler.FileSaveHandler fileSaveHandler;
 
@@ -66,7 +66,7 @@ namespace RibbonNotepad
 			sw.Close();
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
-//			statusTextUpdateEvent(this, "保存しました。");
+			statusTextUpdateEvent(this, "保存しました。");
 		}
 
 		private void readFile(String path)
@@ -81,7 +81,7 @@ namespace RibbonNotepad
 			sr.Close();
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
-//			statusTextUpdateEvent(this, "ファイルを開きました。");
+			statusTextUpdateEvent(this, "ファイルを開きました。");
 		}
 
 		public Boolean SaveAs()
@@ -137,8 +137,8 @@ namespace RibbonNotepad
 
 		private void updateCaption()
 		{
-//			if (mIsTextChanged) windowCaptionChangedEvent(this, mFileName + "*");
-//			else windowCaptionChangedEvent(this, mFileName);
+			if (mIsTextChanged) windowCaptionChangedEvent(this, mFileName + "*");
+			else windowCaptionChangedEvent(this, mFileName);
 		}
 
         public void Exit(System.ComponentModel.CancelEventArgs e)

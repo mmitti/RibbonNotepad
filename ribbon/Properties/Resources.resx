@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,108 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="StatusTextCC" xml:space="preserve">
+    <value>クリップボードにコピー(Ctrl+C)</value>
+  </data>
+  <data name="StatusTextCV" xml:space="preserve">
+    <value>クリップボードを貼り付け(Ctrl+V)</value>
+  </data>
+  <data name="StatusTextCX" xml:space="preserve">
+    <value>クリップボードへ切り取り(Ctrl+X)</value>
+  </data>
+  <data name="StatusTextexit" xml:space="preserve">
+    <value>本アプリを終了します</value>
+  </data>
+  <data name="StatusTextfdD" xml:space="preserve">
+    <value>検索時に上から下に検索します（デフォルト）</value>
+  </data>
+  <data name="StatusTextfdU" xml:space="preserve">
+    <value>検索時に下から上に検索します</value>
+  </data>
+  <data name="StatusTextfindF" xml:space="preserve">
+    <value>上から検索します（同じ条件で2回目からは次を検索と等価)</value>
+  </data>
+  <data name="StatusTextfindN" xml:space="preserve">
+    <value>現在の条件で次を検索します</value>
+  </data>
+  <data name="StatusTextfoICS" xml:space="preserve">
+    <value>検索時に大文字小文字の区別をします</value>
+  </data>
+  <data name="StatusTextfoUseESC" xml:space="preserve">
+    <value>検索にエスケープシーケンスを利用します</value>
+  </data>
+  <data name="StatusTextfoUserReg" xml:space="preserve">
+    <value>検索に正規表現を利用します(大文字小文字の区別、エスケープシーケンスは利用不可)</value>
+  </data>
+  <data name="StatusTextgotoLine" xml:space="preserve">
+    <value>指定した行へ移動します</value>
+  </data>
+  <data name="StatusTextLineBox" xml:space="preserve">
+    <value>行番号を入力します</value>
+  </data>
+  <data name="StatusTextnew" xml:space="preserve">
+    <value>現在の内容を破棄し新規作成します(Ctrl+N)</value>
+  </data>
+  <data name="StatusTextopen" xml:space="preserve">
+    <value>ファイルを開きます(Ctrl+O)</value>
+  </data>
+  <data name="StatusTextprint" xml:space="preserve">
+    <value>印刷します</value>
+  </data>
+  <data name="StatusTextrep" xml:space="preserve">
+    <value>置換して次を検索します</value>
+  </data>
+  <data name="StatusTextrepA" xml:space="preserve">
+    <value>すべて置換します</value>
+  </data>
+  <data name="StatusTextsave" xml:space="preserve">
+    <value>上書き保存をします(Ctrl+S)</value>
+  </data>
+  <data name="StatusTextsaveas" xml:space="preserve">
+    <value>名前をつけて保存します</value>
+  </data>
+  <data name="StatusTextTabEdit" xml:space="preserve">
+    <value>編集タブ</value>
+  </data>
+  <data name="StatusTextTabFind" xml:space="preserve">
+    <value>検索タブ</value>
+  </data>
+  <data name="StatusTextTabLine" xml:space="preserve">
+    <value>行へ移動タブ</value>
+  </data>
+  <data name="StatusTextTEall" xml:space="preserve">
+    <value>全て選択します</value>
+  </data>
+  <data name="StatusTextTEdel" xml:space="preserve">
+    <value>選択されている範囲を削除します</value>
+  </data>
+  <data name="StatusTextTEdt" xml:space="preserve">
+    <value>日時を入力します</value>
+  </data>
+  <data name="StatusTextTEsl" xml:space="preserve">
+    <value>行へ移動タブへ移動します</value>
+  </data>
+  <data name="StatusTexttFind" xml:space="preserve">
+    <value>検索する文字列を入力してください</value>
+  </data>
+  <data name="StatusTexttRep" xml:space="preserve">
+    <value>置換をする文字列を入力してください</value>
+  </data>
+  <data name="StatusTextUndo" xml:space="preserve">
+    <value>操作を取り消します(Ctrl+Z)</value>
+  </data>
+  <data name="StatusTextVfont" xml:space="preserve">
+    <value>フォントの変更をします</value>
+  </data>
+  <data name="StatusTextVstatus" xml:space="preserve">
+    <value>青くてかっこいいステータスバーの表示を切り替えます</value>
+  </data>
+  <data name="StatusTextVwrap" xml:space="preserve">
+    <value>右側で折り返し表示をします</value>
+  </data>
 </root>

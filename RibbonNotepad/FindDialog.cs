@@ -39,40 +39,40 @@ namespace RibbonNotepad
 			base.Show();
 		}
 
-		private void onFindTextChanged(object sender, EventArgs args)
-		{
-			mIsFindFirst = false;
-			mFind.findOption.text = textBox1.Text;
-		}
+		    private void onFindTextChanged(object sender, EventArgs args)
+		    {
+			    mIsFindFirst = false;
+			    mFind.findOption.text = textBox1.Text;
+		    }
 
-		private void onFindOptionCaseSensitiveChanged(object sender, EventArgs args)
-		{
-			mIsFindFirst = false;
-			mFind.findOption.caseSensitive = checkBoxCaseSensitive.Checked;
-		}
+		    private void onFindOptionCaseSensitiveChanged(object sender, EventArgs args)
+		    {
+			    mIsFindFirst = false;
+			    mFind.findOption.caseSensitive = checkBoxCaseSensitive.Checked;
+		    }
 
-		private void onFindOptionUseEscapeSequenceChanged(object sender, EventArgs args)
-		{
-			mIsFindFirst = false;
-			mFind.findOption.useEscapeSequence = checkBoxUseEscapeSequence.Checked;
-		}
+		    private void onFindOptionUseEscapeSequenceChanged(object sender, EventArgs args)
+		    {
+			    mIsFindFirst = false;
+			    mFind.findOption.useEscapeSequence = checkBoxUseEscapeSequence.Checked;
+		    }
 
-		private void onFindOptionUseRegualr(object sender, EventArgs args)
-		{
-			mIsFindFirst = false;
-			mFind.findOption.useRegular = checkBoxUseRegular.Checked;
-			checkBoxUseEscapeSequence.Enabled = groupFindDir.Enabled = !checkBoxUseRegular.Checked;
-		}
+		    private void onFindOptionUseRegualr(object sender, EventArgs args)
+		    {
+			    mIsFindFirst = false;
+			    mFind.findOption.useRegular = checkBoxUseRegular.Checked;
+			    checkBoxUseEscapeSequence.Enabled = groupFindDir.Enabled = !checkBoxUseRegular.Checked;
+		    }
 
-		private void onFindOptionFindDir(object sender, EventArgs args)
-		{
-			mIsFindFirst = false;
-			if (((RadioButton)sender).Checked)
-			{
-				if (sender == FindDirDown) mFind.findOption.findDir = FindOption.FindDirection.DOWN;
-				else mFind.findOption.findDir = FindOption.FindDirection.UP;
-			}
-		}
+		    private void onFindOptionFindDir(object sender, EventArgs args)
+		    {
+			    mIsFindFirst = false;
+			    if (((RadioButton)sender).Checked)
+			    {
+				    if (sender == FindDirDown) mFind.findOption.findDir = FindOption.FindDirection.DOWN;
+				    else mFind.findOption.findDir = FindOption.FindDirection.UP;
+			    }
+		    }
 
 
 		private void buttonFindFirst_Click(object sender, EventArgs e)
@@ -91,10 +91,10 @@ namespace RibbonNotepad
 			mFind.findNext();
 		}
 
-		private void buttonCancel_Click(object sender, EventArgs e)
-		{
-			this.Dispose();
-		}
+		    private void buttonCancel_Click(object sender, EventArgs e)
+		    {
+			    this.Dispose();
+		    }
 
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

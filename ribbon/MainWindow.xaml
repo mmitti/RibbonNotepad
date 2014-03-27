@@ -1,18 +1,32 @@
 ﻿<RibbonWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="ribbon.MainWindow"
-        Title="MainWindow" Height="350" Width="525"  Closing="Window_Closing" ResizeMode="CanResizeWithGrip">
+        Title="MainWindow" Height="350" Width="750"  Closing="Window_Closing" ResizeMode="CanResizeWithGrip"
+    Icon="note.ico">
+    
+    <RibbonWindow.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskBarInfo">
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                    <ThumbButtonInfo
+                        DismissWhenClicked="True"
+                        ImageSource="img/save.png" Click="ThumbButtonInfo_Click" 
+                        ></ThumbButtonInfo>
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </RibbonWindow.TaskbarItemInfo>
     <DockPanel>
         <Ribbon VerticalAlignment="Top" Foreground="Black" DockPanel.Dock="Top" x:Name="RibbonHost"  PreviewMouseDown="RibbonHost_PreviewMouseDown" >
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu  >
-                    <RibbonApplicationMenuItem Header="新規作成" ImageSource="img/new.png" x:Name="new" Click="new_Click"/>
-                    <RibbonApplicationMenuItem Header="開く" ImageSource="img/open.png" x:Name="open" Click="open_Click"/>
-                    <RibbonApplicationMenuItem Header="上書き保存" ImageSource="img/save.png" x:Name="save" Click="save_Click"/>
-                    <RibbonApplicationMenuItem Header="名前をつけて保存" ImageSource="img/saveas.png" x:Name="saveas" Click="saveas_Click"/>
+                    <RibbonApplicationMenuItem Uid="new" Header="新規作成" ImageSource="img/new.png" x:Name="new" Click="new_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonApplicationMenuItem Uid="open" Header="開く" ImageSource="img/open.png" x:Name="open" Click="open_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonApplicationMenuItem Uid="save" Header="上書き保存" ImageSource="img/save.png" x:Name="save" Click="save_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonApplicationMenuItem Uid="saveas" Header="名前をつけて保存" ImageSource="img/saveas.png" x:Name="saveas" Click="saveas_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
                     <RibbonSeparator />
-                    <RibbonApplicationMenuItem Header="印刷" ImageSource="img/print.png" x:Name="print"/>
-                    <RibbonApplicationMenuItem Header="終了" x:Name="exit" Click="exit_Click"/>
+                    <RibbonApplicationMenuItem Uid="print" Header="印刷" ImageSource="img/print.png" x:Name="print" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonApplicationMenuItem Uid="exit" Header="終了" x:Name="exit" Click="exit_Click" MouseEnter="help_Enter" MouseLeave="help_Leave" ImageSource="img/exit.png"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
 
@@ -21,7 +35,7 @@
             </Ribbon.ContextualTabGroups>
 
 
-            <RibbonTab Visibility="Collapsed" Header="編集" Height="88" VerticalAlignment="Top" Background="White">
+            <RibbonTab Uid="TabEdit" Header="編集" Height="88" VerticalAlignment="Top" Background="White" Name="edittab" MouseEnter="help_Enter" MouseLeave="help_Leave" >
                 <RibbonGroup Header="元に戻す"  >
                     <RibbonGroup.GroupSizeDefinitions>
                         <RibbonGroupSizeDefinitionBaseCollection>
@@ -30,7 +44,7 @@
                             </RibbonGroupSizeDefinition>
                         </RibbonGroupSizeDefinitionBaseCollection>
                     </RibbonGroup.GroupSizeDefinitions>
-                    <RibbonButton Command="Undo" Label="元に戻す" KeyTip="Z" x:Name="redo" LargeImageSource="img/redo.png"/>
+                    <RibbonButton Uid="Undo" Command="Undo" Label="元に戻す" KeyTip="Z" x:Name="redo" LargeImageSource="img/redo.png" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
                 </RibbonGroup>
                 <RibbonGroup Header="クリップボード" LargeImageSource="img/paste.png"  >
 
@@ -56,9 +70,9 @@
                         </RibbonGroupSizeDefinitionBaseCollection>
                     </RibbonGroup.GroupSizeDefinitions>
 
-                    <RibbonButton Command="Paste" Label="貼り付け" KeyTip="V" x:Name="paste" LargeImageSource="img/paste.png"/>
-                    <RibbonButton Command="Copy" Label="コピー" KeyTip="C" x:Name="copy" SmallImageSource="img/copy.png"  LargeImageSource="img/copy.png"/>
-                    <RibbonButton Command="Cut" Label="切り取り" KeyTip="X" x:Name="cut" SmallImageSource="img/cut.png" LargeImageSource="img/cut.png"/>
+                    <RibbonButton Uid="CV" Command="Paste" Label="貼り付け" KeyTip="V" x:Name="paste" LargeImageSource="img/paste.png" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonButton Uid="CC" Command="Copy" Label="コピー" KeyTip="C" x:Name="copy" SmallImageSource="img/copy.png"  LargeImageSource="img/copy.png" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonButton Uid="CX" Command="Cut" Label="切り取り" KeyTip="X" x:Name="cut" SmallImageSource="img/cut.png" LargeImageSource="img/cut.png" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
 
                 </RibbonGroup>
 
@@ -70,16 +84,16 @@
                             <GradientStop Color="#FFECF1F9" Offset="0.49"/>
                         </LinearGradientBrush>
                     </RibbonGroup.Background>
-                    <RibbonButton Label="行へ移動" KeyTip="G" x:Name="showtoline" SmallImageSource="img/gotoline.png"  LargeImageSource="img/gotoline.png" Click="showtoline_Click"/>
-                    <RibbonButton  Label="削除" KeyTip="D" x:Name="del" SmallImageSource="img/del.png" LargeImageSource="img/del.png" Click="del_Click"/>
-                    <RibbonMenuButton Label="日付と時刻" KeyTip="T" x:Name="date" SmallImageSource="img/date.png" LargeImageSource="img/date.png" DropDownOpened="date_DropDownOpened">
+                    <RibbonButton Uid="TEsl" Label="行へ移動" KeyTip="G" x:Name="showtoline" SmallImageSource="img/gotoline.png"  LargeImageSource="img/gotoline.png" Click="showtoline_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonButton  Uid="TEdel" Label="削除" KeyTip="D" x:Name="del" SmallImageSource="img/del.png" LargeImageSource="img/del.png" Click="del_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonMenuButton Uid="TEdt" Label="日付と時刻" KeyTip="T" x:Name="date" SmallImageSource="img/date.png" LargeImageSource="img/date.png" DropDownOpened="date_DropDownOpened" MouseEnter="help_Enter" MouseLeave="help_Leave">
                         <RibbonGallery >
                             <RibbonGalleryCategory  x:Name="dataItems" />
                         </RibbonGallery>
 
                     </RibbonMenuButton>
 
-                    <RibbonButton Label="全て選択" KeyTip="A" x:Name="all" Click="all_Click">
+                    <RibbonButton Uid="TEall" Label="全て選択" KeyTip="A" x:Name="all" Click="all_Click" MouseEnter="help_Enter" MouseLeave="help_Leave">
                         <RibbonToggleButton Content="RibbonToggleButton" Height="100" Width="100"/>
                     </RibbonButton>
                 </RibbonGroup>
@@ -91,25 +105,111 @@
                             <GradientStop Color="#FFECF1F9" Offset="0.49"/>
                         </LinearGradientBrush>
                     </RibbonGroup.Background>
-                    <RibbonButton Label="フォント" KeyTip="H" x:Name="font" LargeImageSource="img/font.png"/>
-                    <RibbonToggleButton Label="右端で折り返す" KeyTip="H" x:Name="wrap" Click="wrap_Click" />
-                    <RibbonToggleButton Label="ステータスバー" KeyTip="S" x:Name="status" Click="status_Click"/>
+                    <RibbonButton Uid="Vfont" Label="フォント" KeyTip="H" x:Name="font" LargeImageSource="img/font.png" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonToggleButton Uid="Vwrap" Label="右端で折り返す" KeyTip="H" x:Name="wrap" Click="wrap_Click"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonToggleButton Uid="Vstatus" Label="ステータスバー" KeyTip="S" x:Name="status" Click="status_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
                 </RibbonGroup>
 
             </RibbonTab>
-            <RibbonTab Header="検索" Height="88" VerticalAlignment="Top"  >
+            <RibbonTab Uid="TabFind" Header="検索" Height="88" VerticalAlignment="Top" Name="findtab" MouseEnter="help_Enter" MouseLeave="help_Leave" >
+                <RibbonGroup Header="入力" LargeImageSource="img/input.png">
+
+                    <RibbonGroup.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFBFD" Offset="0.004"/>
+                            <GradientStop Color="#FFEEF3F9" Offset="1"/>
+                            <GradientStop Color="#FFECF1F9" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </RibbonGroup.Background>
+                    <RibbonTextBox Uid="tFind" x:Name="textFind" ToolTip="検索する文字列" Label="検索" TextBoxWidth="150" TextChanged="textFind_TextChanged"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonTextBox Uid="tRep" x:Name="textReplace" ToolTip="置換する文字列" Label="置換" TextBoxWidth="150" TextChanged="textReplace_TextChanged"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                </RibbonGroup>
                 <RibbonGroup Header="検索" LargeImageSource="img/search.png"  >
-                    
-                </RibbonGroup>
-                <RibbonGroup Header="置換"  >
-                </RibbonGroup>
-                <RibbonGroup Header="検索方向"  >
-                </RibbonGroup>
-                <RibbonGroup Header="オプション"  >
-                </RibbonGroup>
+                    <RibbonGroup.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFBFD" Offset="0.004"/>
+                            <GradientStop Color="#FFEEF3F9" Offset="1"/>
+                            <GradientStop Color="#FFECF1F9" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </RibbonGroup.Background>
+                    <RibbonGroup.GroupSizeDefinitions>
+                        <RibbonGroupSizeDefinitionBaseCollection>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                                <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                            </RibbonGroupSizeDefinition>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                            </RibbonGroupSizeDefinition>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                            </RibbonGroupSizeDefinition>
+                        </RibbonGroupSizeDefinitionBaseCollection>
+                    </RibbonGroup.GroupSizeDefinitions>
 
+                    <RibbonButton Uid="findF" x:Name="findFirst" Label="先頭から検索" SmallImageSource="img/gotoline.png" LargeImageSource="img/findfirst.png" Click="findFirst_Click"   MouseEnter="help_Enter" MouseLeave="help_Leave" />
+
+                    <RibbonButton Uid="findN" x:Name="findNext" Label="次を検索" SmallImageSource="img/search.png" LargeImageSource="img/search.png" Click="findNext_Click"   MouseEnter="help_Enter" MouseLeave="help_Leave" />
+                </RibbonGroup>
+                <RibbonGroup Header="置換"  LargeImageSource="img/replace.png">
+                    <RibbonGroup.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFBFD" Offset="0.004"/>
+                            <GradientStop Color="#FFEEF3F9" Offset="1"/>
+                            <GradientStop Color="#FFECF1F9" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </RibbonGroup.Background>
+                    <RibbonGroup.GroupSizeDefinitions>
+                        <RibbonGroupSizeDefinitionBaseCollection>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                                <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
+                            </RibbonGroupSizeDefinition>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                            </RibbonGroupSizeDefinition>
+                            <RibbonGroupSizeDefinition>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                                <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                            </RibbonGroupSizeDefinition>
+                        </RibbonGroupSizeDefinitionBaseCollection>
+                    </RibbonGroup.GroupSizeDefinitions>
+
+                    <RibbonButton Uid="rep" x:Name="replace" Label="置換" SmallImageSource="img/replace.png" LargeImageSource="img/replace.png" Click="replace_Click"   MouseEnter="help_Enter" MouseLeave="help_Leave" />
+
+                    <RibbonButton Uid="repA" x:Name="replaceall" Label="すべて置換" SmallImageSource="img/replaceall.png" LargeImageSource="img/replaceall.png" Click="replaceall_Click"   MouseEnter="help_Enter" MouseLeave="help_Leave" />
+
+                </RibbonGroup>
+                <RibbonGroup Header="検索方向"  LargeImageSource="img/dir.png">
+                    <RibbonGroup.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFBFD" Offset="0.004"/>
+                            <GradientStop Color="#FFEEF3F9" Offset="1"/>
+                            <GradientStop Color="#FFECF1F9" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </RibbonGroup.Background>
+                    <RibbonRadioButton Uid="fdU" x:Name="finddirup" Label="上" SmallImageSource="img/up.png" Checked="finddir_Checked"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+
+                    <RibbonRadioButton Uid="fdD" x:Name="finddirdown" Label="下" SmallImageSource="img/down.png" Checked="finddir_Checked"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                </RibbonGroup>
+                <RibbonGroup Header="オプション" LargeImageSource="img/option.png"  >
+                    <RibbonGroup.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFAFBFD" Offset="0.004"/>
+                            <GradientStop Color="#FFEEF3F9" Offset="1"/>
+                            <GradientStop Color="#FFECF1F9" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </RibbonGroup.Background>
+                    <RibbonCheckBox Uid="foICS" Name="findOptionIdentifyCharSize" Label="大文字小文字を区別する" Click="findOptionIdentifyCharSize_Click" MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonCheckBox Uid="foUseESC" Name="findOptionUseEscSeq" Label="改行=\n タブ=\t \=\\" Click="findOptionUseEscSeq_Click"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonCheckBox Uid="foUserReg" Name="findOptionUseRegural" Label="正規表現を使う" Click="findOptionUseRegural_Click"  MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="行へ移動" Height="88" VerticalAlignment="Top" ContextualTabGroupHeader="行ツール" x:Name="TabToLine" >
+            <RibbonTab Uid="TabLine" Header="行へ移動" Height="88" VerticalAlignment="Top" ContextualTabGroupHeader="行ツール" x:Name="TabToLine" 
+                MouseEnter="help_Enter" MouseLeave="help_Leave">
                 <RibbonGroup Header="行へ移動"  >
                     <RibbonGroup.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -118,8 +218,10 @@
                             <GradientStop Color="#FFECF1F9" Offset="0.49"/>
                         </LinearGradientBrush>
                     </RibbonGroup.Background>
-                    <RibbonTextBox x:Name="LineBox" Text="0" Label="行番号" TextAlignment="Right" />
-                    <RibbonButton Label="行へ移動!" KeyTip="G" x:Name="toLine" SmallImageSource="img/gotoline.png" Click="toLine_Click"/>
+                    <RibbonTextBox Uid="LineBox" x:Name="LineBox" Text="0" Label="行番号" TextAlignment="Right" 
+                MouseEnter="help_Enter" MouseLeave="help_Leave"/>
+                    <RibbonButton Uid="gotoLine" Label="行へ移動!" KeyTip="G" x:Name="toLine" SmallImageSource="img/gotoline.png" Click="toLine_Click"
+                MouseEnter="help_Enter" MouseLeave="help_Leave"/>
 
                 </RibbonGroup>
 
@@ -138,7 +240,7 @@
             <StatusBarItem x:Name="statusColRow"  Content="行0:列0" HorizontalAlignment="Right" Margin="0,0,10,0"/>
         </StatusBar>
 
-        <TextBox x:Name="tbox"  TextWrapping="NoWrap" Text="TextBox" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True" DockPanel.Dock="Top" KeyDown="resetStatusText" />
+        <TextBox  x:Name="tbox"  TextWrapping="NoWrap" Text="TextBox" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True" DockPanel.Dock="Top" KeyDown="resetStatusText" FontSize="16px" AcceptsTab="True" />
 
 
 

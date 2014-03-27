@@ -38,7 +38,7 @@ namespace RibbonNotepad
 			mReplaceDialog = new ReplaceDialog(mReplace);
 			textBox1.CaretChanged += new EventHandler(OnRowColChanged);
 			textBox1.StatusTextChanged += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
-			mToLineDialog = new ToLineDialog();
+			    mToLineDialog = new ToLineDialog();
 			ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 			    String filter = "テキスト文章 (*.txt)|*.txt|C/C++ソースファイル(*.c; *.cpp)|*.c;*.cpp|すべてのファイル (*.*)|*.*";
 			    openFileDialog.Title = "開く";
@@ -47,9 +47,9 @@ namespace RibbonNotepad
 			    saveFileDialog.Filter = filter;
 
     			notepad = new Notepad(this.textBox1);
-			notepad.statusTextUpdateEvent += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
-			notepad.windowCaptionChangedEvent += new Events.WindowCaptionChangedEvent(onWindowCaptionChanged);
-			    notepad.fileOpenHandler = new FileDialogHandler.FileOpenHandler(OpenFile);
+			    notepad.statusTextUpdateEvent += new Events.StatusTextUpdateEvent(onStatusTextUpdate);
+			    notepad.windowCaptionChangedEvent += new Events.WindowCaptionChangedEvent(onWindowCaptionChanged);
+			        notepad.fileOpenHandler = new FileDialogHandler.FileOpenHandler(OpenFile);
 			    notepad.fileSaveHandler = new FileDialogHandler.FileSaveHandler(SaveFile);
 			init();
 			checkCmdArgs();

@@ -4,67 +4,356 @@
 //     ランタイム バージョン:4.0.30319.34011
 //
 //     このファイルへの変更は、以下の状況下で不正な動作の原因になったり、
-//     コードが再生成されるときに損失したりします
+//     コードが再生成されるときに損失したりします。
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ribbon.Properties
-{
-
-
+namespace ribbon.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
     /// </summary>
-    // このクラスは StronglyTypedResourceBuilder クラスによって ResGen
+    // このクラスは StronglyTypedResourceBuilder クラスが ResGen
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
-    // ResGen を実行し直すか、または VS プロジェクトをリビルドします。
+    // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
-        ///   このクラスに使用される、キャッシュされた ResourceManager のインスタンスを返します。
+        ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ribbon.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   クリップボードにコピー(Ctrl+C) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextCC {
+            get {
+                return ResourceManager.GetString("StatusTextCC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   クリップボードを貼り付け(Ctrl+V) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextCV {
+            get {
+                return ResourceManager.GetString("StatusTextCV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   クリップボードへ切り取り(Ctrl+X) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextCX {
+            get {
+                return ResourceManager.GetString("StatusTextCX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   本アプリを終了します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextexit {
+            get {
+                return ResourceManager.GetString("StatusTextexit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索時に上から下に検索します（デフォルト） に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfdD {
+            get {
+                return ResourceManager.GetString("StatusTextfdD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索時に下から上に検索します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfdU {
+            get {
+                return ResourceManager.GetString("StatusTextfdU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   上から検索します（同じ条件で2回目からは次を検索と等価) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfindF {
+            get {
+                return ResourceManager.GetString("StatusTextfindF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   現在の条件で次を検索します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfindN {
+            get {
+                return ResourceManager.GetString("StatusTextfindN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索時に大文字小文字の区別をします に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfoICS {
+            get {
+                return ResourceManager.GetString("StatusTextfoICS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索にエスケープシーケンスを利用します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfoUseESC {
+            get {
+                return ResourceManager.GetString("StatusTextfoUseESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索に正規表現を利用します(大文字小文字の区別、エスケープシーケンスは利用不可) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextfoUserReg {
+            get {
+                return ResourceManager.GetString("StatusTextfoUserReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   指定した行へ移動します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextgotoLine {
+            get {
+                return ResourceManager.GetString("StatusTextgotoLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   行番号を入力します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextLineBox {
+            get {
+                return ResourceManager.GetString("StatusTextLineBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   現在の内容を破棄し新規作成します(Ctrl+N) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextnew {
+            get {
+                return ResourceManager.GetString("StatusTextnew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ファイルを開きます(Ctrl+O) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextopen {
+            get {
+                return ResourceManager.GetString("StatusTextopen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   印刷します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextprint {
+            get {
+                return ResourceManager.GetString("StatusTextprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   置換して次を検索します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextrep {
+            get {
+                return ResourceManager.GetString("StatusTextrep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   すべて置換します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextrepA {
+            get {
+                return ResourceManager.GetString("StatusTextrepA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   上書き保存をします(Ctrl+S) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextsave {
+            get {
+                return ResourceManager.GetString("StatusTextsave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名前をつけて保存します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextsaveas {
+            get {
+                return ResourceManager.GetString("StatusTextsaveas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   編集タブ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTabEdit {
+            get {
+                return ResourceManager.GetString("StatusTextTabEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索タブ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTabFind {
+            get {
+                return ResourceManager.GetString("StatusTextTabFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   行へ移動タブ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTabLine {
+            get {
+                return ResourceManager.GetString("StatusTextTabLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   全て選択します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTEall {
+            get {
+                return ResourceManager.GetString("StatusTextTEall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   選択されている範囲を削除します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTEdel {
+            get {
+                return ResourceManager.GetString("StatusTextTEdel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   日時を入力します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTEdt {
+            get {
+                return ResourceManager.GetString("StatusTextTEdt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   行へ移動タブへ移動します に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextTEsl {
+            get {
+                return ResourceManager.GetString("StatusTextTEsl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索する文字列を入力してください に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTexttFind {
+            get {
+                return ResourceManager.GetString("StatusTexttFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   置換をする文字列を入力してください に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTexttRep {
+            get {
+                return ResourceManager.GetString("StatusTexttRep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   操作を取り消します(Ctrl+Z) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextUndo {
+            get {
+                return ResourceManager.GetString("StatusTextUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   フォントの変更をします に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextVfont {
+            get {
+                return ResourceManager.GetString("StatusTextVfont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   青くてかっこいいステータスバーの表示を切り替えます に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextVstatus {
+            get {
+                return ResourceManager.GetString("StatusTextVstatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   右側で折り返し表示をします に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StatusTextVwrap {
+            get {
+                return ResourceManager.GetString("StatusTextVwrap", resourceCulture);
             }
         }
     }

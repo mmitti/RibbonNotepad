@@ -25,9 +25,25 @@ namespace ribbon
         private Microsoft.Win32.OpenFileDialog mOpenDialog;
         private Microsoft.Win32.SaveFileDialog mSaveDialog;
         private RibbonNotepad.Notepad note;
+        private Boolean mIsFindFirst;
+
+        private String ASSEMBLY_NAME;
+
+        private Find mFind;
+        private Replace mReplace;
         public MainWindow()
         {
             InitializeComponent();
+
+            mFind = new Find(tbox);
+            mFind.statusTextUpdate += new RibbonNotepad.Events.StatusTextUpdateEvent(OnStatusTextUpdate);
+            mReplace = new Replace(mFind, tbox);
+            mReplace.statusTextUpdate += new RibbonNotepad.Events.StatusTextUpdateEvent(OnStatusTextUpdate);
+            mIsFindFirst = false;
+
+            ASSEMBLY_NAME = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+			
+
             String filter = "テキスト文章 (*.txt)|*.txt|C/C++ソースファイル(*.c; *.cpp)|*.c;*.cpp|すべてのファイル (*.*)|*.*";
             mOpenDialog = new Microsoft.Win32.OpenFileDialog();
             mSaveDialog = new Microsoft.Win32.SaveFileDialog();
@@ -41,6 +57,8 @@ namespace ribbon
             note.statusTextUpdateEvent += new RibbonNotepad.Events.StatusTextUpdateEvent(OnStatusTextUpdate);
             note.windowCaptionChangedEvent += new RibbonNotepad.Events.WindowCaptionChangedEvent(OnWindowTextUpdate);
             tbox.SelectionChanged += new RoutedEventHandler(onTextSelectionChanged);
+            finddirdown.IsChecked = true;
+
             Init();
 
         }
@@ -52,7 +70,7 @@ namespace ribbon
 
         public void OnWindowTextUpdate(object sender, String text)
         {
-            this.Title = text;
+            this.Title = ASSEMBLY_NAME+" - "+text;
         }
 
         private void Init(){
@@ -70,6 +88,7 @@ namespace ribbon
         private void onTextSelectionChanged(object o, RoutedEventArgs a)
         {
             OnRibbonUpdate();
+            updateStatusBar();
         }
 
         private void OnRibbonUpdate()
@@ -82,6 +101,11 @@ namespace ribbon
             else status.IsChecked = false;
             TabToLine.Visibility = Visibility.Hidden;
             updateStatusBar();
+            Boolean isCanFind = textFind.Text.Length > 0;
+            findNext.IsEnabled = isCanFind && mFind.canFindNext();
+            findFirst.IsEnabled = isCanFind;
+            Boolean isCanReplace = textReplace.Text.Length > 0;
+            replace.IsEnabled = replaceall.IsEnabled = isCanReplace;
         }
 
         private void updateStatusBar(){
@@ -104,6 +128,7 @@ namespace ribbon
             {
                 statusColRow.Content = "";
             }
+            OnStatusTextUpdate(this, "Ready");
         }
 
         private FileDialogHandler.Result OpenFile()
@@ -172,6 +197,7 @@ namespace ribbon
         {
             if (wrap.IsChecked==true) tbox.TextWrapping = TextWrapping.Wrap;
             else tbox.TextWrapping = TextWrapping.NoWrap;
+            updateStatusBar();
         }
 
         private  String[] DataTimeFormat = {   "HH:MM:ss", "HH時MM分ss秒", "yyyy/mm/dd",
@@ -181,9 +207,13 @@ namespace ribbon
         {
             //更新
             dataItems.Items.Clear();
+            int i = 1;
             foreach (String format in DataTimeFormat)
             {
                 RibbonGalleryItem item = new RibbonGalleryItem();
+                item.MouseEnter += new MouseEventHandler(help_Enter);
+                item.MouseLeave += new MouseEventHandler(help_Leave);
+                item.Uid = "形式" + i + " : " + DateTime.Now.ToString(format);
                 item.Content = format;
                 dataItems.Items.Add(item);
                 item.Selected += new RoutedEventHandler((o, arg) =>
@@ -195,6 +225,7 @@ namespace ribbon
                     tbox.SelectionLength = 0;
 
                 });
+                i++;
             }
         }
 
@@ -239,6 +270,101 @@ namespace ribbon
         {
             if (status.IsChecked == true) StatusBar.Visibility = Visibility.Visible;
             else StatusBar.Visibility = Visibility.Collapsed;
+        }
+
+        private void ThumbButtonInfo_Click(object sender, EventArgs e)
+        {
+            note.Save();
+        }
+
+        private void textFind_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            mIsFindFirst = false;
+            mFind.findOption.text = textFind.Text;
+            OnRibbonUpdate();
+        }
+
+        private void textReplace_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            mIsFindFirst = false;
+            mReplace.replaceText = textReplace.Text;
+            OnRibbonUpdate();
+        }
+
+        private void findFirst_Click(object sender, RoutedEventArgs e)
+        {
+            if (!mFind.isFound) mIsFindFirst = false;
+            if (!mIsFindFirst)
+            {
+                mFind.findFirst();
+                mIsFindFirst = true;
+            }
+            else mFind.findNext();
+        }
+
+        private void findNext_Click(object sender, RoutedEventArgs e)
+        {
+            mFind.findNext();
+        }
+
+        private void replace_Click(object sender, RoutedEventArgs e)
+        {
+            mReplace.replace();
+        }
+
+        private void replaceall_Click(object sender, RoutedEventArgs e)
+        {
+            mReplace.replaceAll();
+        }
+
+        private void finddir_Checked(object sender, RoutedEventArgs e)
+        {
+            mIsFindFirst = false;
+            if (((RibbonRadioButton)sender).IsChecked == true)
+            {
+                if(sender.Equals(finddirup))mFind.findOption.findDir = FindOption.FindDirection.UP;
+                else mFind.findOption.findDir = FindOption.FindDirection.DOWN;
+            }
+        }
+
+
+        private void findOptionIdentifyCharSize_Click(object sender, RoutedEventArgs e)
+        {
+            mIsFindFirst = false;
+            mFind.findOption.caseSensitive = (findOptionIdentifyCharSize.IsChecked == true);
+        }
+
+        private void findOptionUseEscSeq_Click(object sender, RoutedEventArgs e)
+        {
+            mIsFindFirst = false;
+            mFind.findOption.useEscapeSequence = (findOptionUseEscSeq.IsChecked == true);
+
+        }
+
+        private void findOptionUseRegural_Click(object sender, RoutedEventArgs e)
+        {
+            mIsFindFirst = false;
+            mFind.findOption.useRegular = (findOptionUseRegural.IsChecked == true);
+            findOptionUseEscSeq.IsEnabled = findOptionIdentifyCharSize.IsEnabled = (findOptionUseRegural.IsChecked == false);
+        }
+
+        private void help_Enter(object sender, MouseEventArgs e)
+        {
+            UIElement elm = (UIElement)sender;
+            //UIDでstringを探してなければそのまま出す
+            String text = null;
+            try
+            {
+                text = ribbon.Properties.Resources.ResourceManager.GetString("StatusText" + elm.Uid);
+            }
+            catch (Exception ex) { }
+            if (text == null) text = elm.Uid;
+            OnStatusTextUpdate(sender, text);
+        }
+
+        private void help_Leave(object sender, MouseEventArgs e)
+        {
+            OnStatusTextUpdate(sender, "Ready");
         }
         
     }

@@ -59,9 +59,12 @@ namespace ribbon
             if (note.New())
 			{
 				OnStatusTextUpdate(this, "Ready");
+                tbox.SelectionStart = 0;
+                tbox.SelectionLength = 0;
+                tbox.Focus();
 			}
             OnRibbonUpdate();
-           
+
         }
 
         private void onTextSelectionChanged(object o, RoutedEventArgs a)
@@ -75,7 +78,32 @@ namespace ribbon
             else del.IsEnabled = false;
             if (tbox.TextWrapping == TextWrapping.NoWrap) wrap.IsChecked = false;
             else wrap.IsChecked = true;
+            if (StatusBar.Visibility == Visibility.Visible) status.IsChecked = true;
+            else status.IsChecked = false;
             TabToLine.Visibility = Visibility.Hidden;
+            updateStatusBar();
+        }
+
+        private void updateStatusBar(){
+            if (tbox.SelectionLength > 0)
+            {
+                statusColRow.Content = "文字選択中:" + tbox.SelectionLength;
+            }
+            else if (tbox.TextWrapping == TextWrapping.NoWrap)
+            {
+                int l = tbox.GetLineIndexFromCharacterIndex(tbox.SelectionStart);
+                int lstart = tbox.GetCharacterIndexFromLineIndex(l);
+                if (lstart < 0) lstart = 0;
+                int r = tbox.SelectionStart - lstart;
+                if (r < 0) r = 0;
+                if (l < 0) l = 0;
+                l++; r++;
+                statusColRow.Content = "行:" + l + "列:" + r;
+            }
+            else
+            {
+                statusColRow.Content = "";
+            }
         }
 
         private FileDialogHandler.Result OpenFile()
@@ -197,23 +225,21 @@ namespace ribbon
             }
         }
         
-
-
         private void resetStatusText(object sender, KeyEventArgs e)
         {
             OnStatusTextUpdate(sender, "Ready");
         }
-
-        
-        
-
       
         private void RibbonHost_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             OnStatusTextUpdate(sender, "Ready");
         }
-    
-        
+
+        private void status_Click(object sender, RoutedEventArgs e)
+        {
+            if (status.IsChecked == true) StatusBar.Visibility = Visibility.Visible;
+            else StatusBar.Visibility = Visibility.Collapsed;
+        }
         
     }
 }

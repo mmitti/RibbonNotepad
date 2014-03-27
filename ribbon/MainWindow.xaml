@@ -21,7 +21,7 @@
             </Ribbon.ContextualTabGroups>
 
 
-            <RibbonTab Header="編集" Height="88" VerticalAlignment="Top" Background="White">
+            <RibbonTab Visibility="Collapsed" Header="編集" Height="88" VerticalAlignment="Top" Background="White">
                 <RibbonGroup Header="元に戻す"  >
                     <RibbonGroup.GroupSizeDefinitions>
                         <RibbonGroupSizeDefinitionBaseCollection>
@@ -93,11 +93,22 @@
                     </RibbonGroup.Background>
                     <RibbonButton Label="フォント" KeyTip="H" x:Name="font" LargeImageSource="img/font.png"/>
                     <RibbonToggleButton Label="右端で折り返す" KeyTip="H" x:Name="wrap" Click="wrap_Click" />
-                    <RibbonToggleButton Label="ステータスバー" KeyTip="S" x:Name="status"/>
+                    <RibbonToggleButton Label="ステータスバー" KeyTip="S" x:Name="status" Click="status_Click"/>
                 </RibbonGroup>
 
             </RibbonTab>
-            <RibbonTab Header="検索" Height="88" VerticalAlignment="Top"  />
+            <RibbonTab Header="検索" Height="88" VerticalAlignment="Top"  >
+                <RibbonGroup Header="検索" LargeImageSource="img/search.png"  >
+                    
+                </RibbonGroup>
+                <RibbonGroup Header="置換"  >
+                </RibbonGroup>
+                <RibbonGroup Header="検索方向"  >
+                </RibbonGroup>
+                <RibbonGroup Header="オプション"  >
+                </RibbonGroup>
+
+            </RibbonTab>
             <RibbonTab Header="行へ移動" Height="88" VerticalAlignment="Top" ContextualTabGroupHeader="行ツール" x:Name="TabToLine" >
                 <RibbonGroup Header="行へ移動"  >
                     <RibbonGroup.Background>
@@ -116,16 +127,21 @@
 
 
         </Ribbon>
-        <StatusBar  DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30" Foreground="White" Background="#FF004488">
+        <StatusBar Name="StatusBar"  DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30" Foreground="White" Background="#FF004488">
             <Grid  Width="{Binding ActualWidth, ElementName=statusBar, Mode=OneWay}" >
-                <StatusBarItem x:Name="mainStatusText"  Content="ステータスバーテストTESTtestuuyy"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <StatusBarItem x:Name="mainStatusText"  Content="Ready"/>
             </Grid>
+            <StatusBarItem x:Name="statusColRow"  Content="行0:列0" HorizontalAlignment="Right" Margin="0,0,10,0"/>
         </StatusBar>
 
         <TextBox x:Name="tbox"  TextWrapping="NoWrap" Text="TextBox" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True" DockPanel.Dock="Top" KeyDown="resetStatusText" />
 
 
-        
+
 
     </DockPanel>
 

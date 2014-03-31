@@ -1,7 +1,9 @@
 ﻿using RibbonNotepad;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,6 +35,7 @@ namespace ribbon
         private Replace mReplace;
         public MainWindow()
         {
+            Notif.Notification.TryCreateShortcut();
             InitializeComponent();
 
             mFind = new Find(tbox);
@@ -83,6 +86,7 @@ namespace ribbon
 			}
             OnRibbonUpdate();
 
+            Notif.Notification.notif("RibbonNotepad", "Ready");
         }
 
         private void onTextSelectionChanged(object o, RoutedEventArgs a)
@@ -365,6 +369,13 @@ namespace ribbon
         private void help_Leave(object sender, MouseEventArgs e)
         {
             OnStatusTextUpdate(sender, "Ready");
+        }
+
+        private void ThumbButtonInfo_Click_1(object sender, EventArgs e)
+        {
+            if (note.IsTextChanged)
+                Process.Start(Assembly.GetEntryAssembly().Location);
+            else this.Focus();
         }
         
     }

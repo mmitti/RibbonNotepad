@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\mmitti\Git\RibbonNotepad\ribbon\obj\Debug\
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\
 ribbon
 none
 false
-DEBUG;TRACE
+TRACE
 D:\mmitti\Git\RibbonNotepad\ribbon\App.xaml
 11151548125
 
-17-1045145093
-22-1497059659
+13-1114977396
+221160159442
 MainWindow.xaml;
 
 False

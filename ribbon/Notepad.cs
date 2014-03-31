@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows;
+using System.Threading.Tasks;
 namespace RibbonNotepad
 {
 	class Notepad
@@ -17,11 +18,14 @@ namespace RibbonNotepad
 		public event Events.StatusTextUpdateEvent statusTextUpdateEvent;
 		public FileDialogHandler.FileOpenHandler fileOpenHandler;
 		public FileDialogHandler.FileSaveHandler fileSaveHandler;
+        public Boolean IsTextChanged { get {return mIsTextChanged; } }
 
+        private Tick mTick;
 		public Notepad(TextBox box)
 		{
 			mText = box;
 			mText.TextChanged += new TextChangedEventHandler(onTextChanged);
+            mTick = new Tick();
 		}
 
 		public Boolean New()
@@ -38,11 +42,15 @@ namespace RibbonNotepad
 			mIsTextChanged = false;
 			updateCaption();
 			mFilePath = "";
+            mTick.init();
+            mTick.start();
 			return true;
 		}
 
 		public Boolean Save()
 		{
+            mTick.init();
+            mTick.start();
 			//上書き保存
 			//新規の場合はSaveAsを呼ぶ
 			if (mFilePath == "")
@@ -54,9 +62,37 @@ namespace RibbonNotepad
 				writeFile(mFilePath);
 				mIsTextChanged = false;
 				updateCaption();
+
 				return true;
 			}
 		}
+
+
+        //一定時間ごとに通知を出すうざいやつ
+        private class Tick
+        {
+            private long mStart;
+            private Boolean mIsEnable;
+            private const long WAIT_TIME = 5 * 60;
+            public void init(){
+                mStart = DateTime.Now.Ticks / 10000000;
+            }
+            public async void start()
+            {
+                mIsEnable = true;
+
+                while (mIsEnable)
+                {
+                    await Task.Delay(3000);
+                    if (DateTime.Now.Ticks / 10000000 > mStart + WAIT_TIME) ribbon.Notif.Notification.notif("RibbonNotepad Warning", "ファイルを保存してください。");
+                }
+            }
+
+            public void stop()
+            {
+                mIsEnable = false;
+            }
+        }
 
 		private void writeFile(String path)
 		{
@@ -67,6 +103,7 @@ namespace RibbonNotepad
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
 			statusTextUpdateEvent(this, "保存しました。");
+            ribbon.Notif.Notification.notif("RibbonNotepad", "保存完了");
 		}
 
 		private void readFile(String path)
@@ -82,6 +119,7 @@ namespace RibbonNotepad
 			mFilePath = path;
 			mFileName = Path.GetFileName(path);
 			statusTextUpdateEvent(this, "ファイルを開きました。");
+            ribbon.Notif.Notification.notif("RibbonNotepad", "読み込み完了");
 		}
 
 		public Boolean SaveAs()

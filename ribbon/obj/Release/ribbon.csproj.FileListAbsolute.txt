@@ -1,0 +1,16 @@
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\ribbon.exe.config
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\ribbon.exe
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\ribbon.pdb
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\MainWindow.baml
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\MainWindow.g.cs
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\App.g.cs
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon_MarkupCompile.cache
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.g.resources
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.Properties.Resources.resources
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.csproj.GenerateResource.Cache
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.exe
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.pdb
+D:\mmitti\Git\RibbonNotepad\ribbon\obj\Release\ribbon.csprojResolveAssemblyReference.cache
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\Microsoft.WindowsAPICodePack.pdb
+D:\mmitti\Git\RibbonNotepad\ribbon\bin\Release\Microsoft.WindowsAPICodePack.Shell.pdb

@@ -11,6 +11,10 @@
                     <ThumbButtonInfo
                         DismissWhenClicked="True"
                         ImageSource="img/save.png" Click="ThumbButtonInfo_Click" 
+                        ></ThumbButtonInfo> 
+                    <ThumbButtonInfo
+                        DismissWhenClicked="True"
+                        ImageSource="img/new.png" Click="ThumbButtonInfo_Click_1"  
                         ></ThumbButtonInfo>
                 </ThumbButtonInfoCollection>
             </TaskbarItemInfo.ThumbButtonInfos>
